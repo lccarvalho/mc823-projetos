@@ -20,6 +20,26 @@
 
 #define MAXDATASIZE 100 // max number of bytes we can get at once 
 
+
+void printUsage() {
+    printf("\n823project1 [conexao] [comando] [param]\n");
+    
+    printf("\nconexao: arquivo com parametros de acesso ao servidor (a definir)\n");
+    
+    printf("\ncomandos:\n");
+    printf("\n    -l : lista os codigos e nomes das disciplinas cadastradas");
+    printf("\n    -p [param] : retorna o programa da disciplina [param]");
+    printf("\n    -i [param] : retorna  todas as informacoes sobre a disciplina [param]");
+    printf("\n                 se [param] nao for fornecido, retorna todas as informacoes");
+    printf("\n                 de todas as disciplinas cadastradas");
+    printf("\n    -w [param] : recebe e armazena o texto de um comentario sobre a proxima");
+    printf("\n                 aula da disciplina [param]");
+    printf("\n    -c [param] : retorna o comentario armazenado sobre a proxima aula da");
+    printf("\n                 disciplina [param]\n");
+} 
+
+
+
 // get sockaddr, IPv4 or IPv6:
 void *get_in_addr(struct sockaddr *sa)
 {
@@ -44,8 +64,8 @@ int main(int argc, char *argv[])
     char parametro[7];//Parametro a ser enviado para o servidor
 
 	if (argc < 3 || argc > 4) {
-	    fprintf(stderr,"usage: %s hostname language (p=portugues, i=ingles)\n", argv[0]);
-	    exit(1);
+	    printUsage();
+        return 0;
 	}
 
 	memset(&hints, 0, sizeof hints);
