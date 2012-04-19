@@ -1,10 +1,8 @@
 
 
 
-#include <string.h>
 #include "mm.h"
 #include "str.h"
-#include <malloc.h>
 
 string str_initialize(size_t size) {
 	string str;

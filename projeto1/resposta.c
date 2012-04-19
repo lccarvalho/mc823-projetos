@@ -18,6 +18,11 @@ char * preparaResposta(char *buf) {
         disc= strndup(buf+1, 5);
 		return resposta = disc;
     }
+	else if(buf[0] == 'i') {
+		
+		
+	}
+	
 	else return resposta = "Algo errado...";
 }
 
