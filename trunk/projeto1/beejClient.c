@@ -22,19 +22,18 @@
 
 
 void printUsage() {
-    printf("\n823project1 [conexao] [comando] [param]\n");
+    printf("\nclient.o [comando] [param]\n");
     
-    printf("\nconexao: arquivo com parametros de acesso ao servidor (a definir)\n");
-    
+   
     printf("\ncomandos:\n");
-    printf("\n    -l : lista os codigos e nomes das disciplinas cadastradas");
-    printf("\n    -p [param] : retorna o programa da disciplina [param]");
-    printf("\n    -i [param] : retorna  todas as informacoes sobre a disciplina [param]");
+    printf("\n    l : lista os codigos e nomes das disciplinas cadastradas");
+    printf("\n    p [param] : retorna o programa da disciplina [param]");
+    printf("\n    i [param] : retorna  todas as informacoes sobre a disciplina [param]");
     printf("\n                 se [param] nao for fornecido, retorna todas as informacoes");
     printf("\n                 de todas as disciplinas cadastradas");
-    printf("\n    -w [param] : recebe e armazena o texto de um comentario sobre a proxima");
+    printf("\n    w [param] : recebe e armazena o texto de um comentario sobre a proxima");
     printf("\n                 aula da disciplina [param]");
-    printf("\n    -c [param] : retorna o comentario armazenado sobre a proxima aula da");
+    printf("\n    c [param] : retorna o comentario armazenado sobre a proxima aula da");
     printf("\n                 disciplina [param]\n");
 } 
 
@@ -62,6 +61,7 @@ int main(int argc, char *argv[])
     struct timeval endTime; //Estrutura contendo o tempo final de execução
     double time;
     char parametro[7];//Parametro a ser enviado para o servidor
+    char *resposta; //Resposta do servidor
 
 	if (argc < 3 || argc > 4) {
 	    printUsage();
@@ -122,21 +122,26 @@ int main(int argc, char *argv[])
 		close(sockfd);
 		exit(0);
 	}
-				
-	if ((numbytes = recv(sockfd, buf, MAXDATASIZE-1, 0)) == -1) {
-	    perror("recv");
-	    exit(1);
-	}
-
+    
+    //Imprime a resposta na tela, recebendo os dados do socket
+    while(1){
+        if((numbytes = recv(sockfd, buf, MAXDATASIZE-1,0)) >0){
+            resposta = strndup(buf, numbytes);
+            printf("%s", resposta);
+        }
+        else if(numbytes <0 && errno != EINTR){
+            perror("recv");
+            exit(1);
+        }
+        else if(numbytes == 0){
+            break;
+        }
+    }				
     //Termina a contagem de tempo, após o read (recv)
     gettimeofday(&endTime, NULL);
 
     time = calculaTempo(startTime, endTime);
-
-	buf[numbytes] = '\0';
-
-	printf("client: received '%s'\n",buf);
-    
+   
     printf("\nTotal time: %.2lf microseconds\n", time);
 
 	close(sockfd);
