@@ -31,12 +31,71 @@ char * preparaResposta(char *buf) {
             return resposta = infoDisciplina(disc);
         }
     }
+    else if(buf[0] == 'w'){
+        char* comentario;
+        //Copia a disciplina
+        disc = strndup(buf+1, 5);
+        comentario = strndup(buf+6, strlen(buf));
+        return resposta = escreveComentario(disc, comentario);
+    }
+    else if(buf[0] == 'c'){
+        //Copia a disciplina
+        disc = strndup(buf+1, 5);
+        return resposta = leComentario(disc);
+
+    }
 	else return resposta = "Algo errado...";
 }
 
+
+char* leComentario(char* disc){
+    char *info, *resposta;
+    int i, sub, cont=0, j=0;
+    char *com = "Comentário:";
+    //Retorna uma string com todas as informações da disciplina
+    info = infoDisciplina(disc);
+    sub = strlen(com);
+    for (i = 0; i < strlen(info); i++) {
+         if((info[i] == com[j]) && (com[j] != '\0')){
+             printf("%c\n", info[i]);
+             cont++;
+             j++;
+             if(cont == (sub-1)){
+                resposta = strndup(info+i+2, strlen(info));
+                return resposta;
+             }
+         }
+         else if(com[j] != '\0'){
+             cont =0;
+             j = 0;
+         }
+    }
+
+    return "Houve um erro ao obter o comentário.\n";
+}
+char * escreveComentario( char *disc, char *comentario){
+    FILE *fd;
+    char *text;
+   /* Normaliza e obtem o nome do arquivo correspondente
+     * a disciplina passada como parametro*/
+    uppercase(disc);
+    strcpy(text, disc);
+    strcat(text, ".txt");
+
+    fd = fopen(text, "a+");
+    /* Verifica se a abertura do arquivo foi bem sucedida */
+    if(fd == NULL){
+        printf("Erro ao abrir o arquivo da disciplina %s.\n", disc);
+        exit(-1);
+    }
+    else{ 
+        fprintf(fd, "%s\n", comentario);
+        fclose(fd);
+        return "Comentário escrito com sucesso!\n";
+    }
+}
 char * listaDisciplinas(){
     FILE *fd;
-    //string *str;
 	string str;
     int i=0;
     
@@ -72,19 +131,21 @@ char * listaDisciplinas(){
 
 
 char* retiraSubstring( char* str, int lenstr, char* sub, int lensub){
-    int i, cont=0;
+    int i, cont=0, j=0;
     char *novastr;
 
     for (i = 0; i < lenstr; i++) {
-        if(str[i] == sub[i]){
+        if((str[i]==sub[j]) && (sub[j] != '\0')){
             cont++;
+            j++;
+            if(cont == (lensub-1)){
+                novastr = strndup(str, i - j);
+                return novastr;
+            }
         }
-        else if(cont == lensub){
-            novastr = strndup(str, (i -lensub));
-            return novastr;
-        }
-        else{
+        else if(sub[j] != '\0'){
             cont=0;
+            j=0;
         }
     }
     return "";
@@ -104,7 +165,7 @@ char* programaDisciplina(char* disc){
     fd = fopen(texto, "r");
     /* Verifica se a abertura do arquivo foi bem sucedida */
     if(fd == NULL){
-        printf("Erro ao abrir o arquivo com codigos das disciplinas.\n");
+        printf("Erro ao abrir o arquivo da disciplina %s.\n", disc);
         exit(-1);
     }
     else{
@@ -126,16 +187,22 @@ char* programaDisciplina(char* disc){
             /* Imprime a linha lida */
             while(pch !=NULL){
                 /* Para a impressao caso se depare com a palavra "Horário:" */
-                if(!verificaSubstring(pch, strlen(pch), "Horário:", strlen("Horário:"))){
+                /*  if(!verificaSubstring(pch, strlen(pch), "Horário:", strlen("Horário:"))){
                     fclose(fd);
                     char *substr = retiraSubstring(pch, strlen(pch), "Horário:", strlen("Horário:"));
                     str_concat_chararr(str, substr, strlen(substr));
                     str_concat_chararr(str,"\n", sizeof(char));
                     return str->s;
+                }*/
+                if(strcmp(pch, "Horário:\n") ==0){
+                    str_concat_chararr(str, "\n", sizeof(char));
+                    fclose(fd);
+                    return str->s;
                 }
-                //printf("%s\n", pch);
-                str_concat_chararr(str, pch, strlen(pch));
-                str_concat_chararr(str, " ", sizeof(char));
+                else{
+                    str_concat_chararr(str, pch, strlen(pch));
+                    str_concat_chararr(str, " ", sizeof(char));
+                }
                 pch = strtok(NULL, " ");
                 
                 
@@ -261,7 +328,6 @@ char* infoDisciplina(char* disc){
         }
         str_concat_chararr(str, "\n", sizeof(char));
         fclose(fd);
-
         return str->s;
     }
 }
@@ -275,17 +341,21 @@ void uppercase(char* sPtr){
 }
 
 int verificaSubstring( char* str, int lenstr, char* sub, int lensub){
-    int i, cont=0;
+    int i, j=0, cont=0;
+
+
     for (i = 0; i < lenstr; i++) {
-        if(str[i] == sub[i]){
-            cont++;
-        }
-        else if(cont == lensub){
-            return 0;
-        }
-        else{
-            cont=0;
-        }
+         if((str[i] == sub[j]) && (sub[j] != '\0')){
+             cont++;
+             j++;
+             if(cont == (lensub-1)){
+                return 0;
+             }
+         }
+         else if(sub[j] != '\0'){
+             cont =0;
+             j = 0;
+         }
     }
     return 1;
 }
