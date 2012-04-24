@@ -15,6 +15,7 @@
 #include <arpa/inet.h>
 
 #include "tempo.h"
+#include "str.h"
 
 #define PORT "39410" // the port client will be connecting to 
 
@@ -22,7 +23,7 @@
 
 
 void printUsage() {
-    printf("\nclient.o [comando] [param]\n");
+    printf("\nclient.o  [porta] [comando] [param] [texto]\n");
     
    
     printf("\ncomandos:\n");
@@ -31,7 +32,7 @@ void printUsage() {
     printf("\n    i [param] : retorna  todas as informacoes sobre a disciplina [param]");
     printf("\n                 se [param] nao for fornecido, retorna todas as informacoes");
     printf("\n                 de todas as disciplinas cadastradas");
-    printf("\n    w [param] : recebe e armazena o texto de um comentario sobre a proxima");
+    printf("\n    w [param] [texto] : recebe e armazena o texto de um comentario sobre a proxima");
     printf("\n                 aula da disciplina [param]");
     printf("\n    c [param] : retorna o comentario armazenado sobre a proxima aula da");
     printf("\n                 disciplina [param]\n");
@@ -60,10 +61,10 @@ int main(int argc, char *argv[])
     struct timeval startTime; //Estrutura contendo o tempo de início de execução
     struct timeval endTime; //Estrutura contendo o tempo final de execução
     double time;
-    char parametro[7];//Parametro a ser enviado para o servidor
+    string parametro;//Parametro a ser enviado para o servidor
     char *resposta; //Resposta do servidor
 
-	if (argc < 3 || argc > 4) {
+	if (argc < 3 || (argc !=5 && argv[2][0] == 'w') || (argc == 3 && argv[2][0] == 'p')) {
 	    printUsage();
         return 0;
 	}
@@ -108,21 +109,32 @@ int main(int argc, char *argv[])
     //Inicia a contagem de tempo, antes do write (send)
     gettimeofday(&startTime, NULL);
 
+    //Inicializa a string a ser enviada ao servidor
+    parametro = str_initialize(((size_t)MAXDATASIZE));
+    //Funções envolvendo disciplinas específicas
     if(argc == 4){
 
-        strcpy(parametro, argv[2]);
-        strcat(parametro, argv[3]); 
+        str_concat_chararr(parametro, argv[2], strlen(argv[2]));
+        str_concat_chararr(parametro, argv[3], strlen(argv[3])); 
+    }
+    //Escrever comentário
+    else if(argc == 5){
+        str_concat_chararr(parametro, argv[2], strlen(argv[2]));
+        str_concat_chararr(parametro, argv[3], strlen(argv[3]));
+        str_concat_chararr(parametro, argv[4], strlen(argv[4]));
     }
     else{
 
-        strcpy(parametro, argv[2]);
+        str_concat_chararr(parametro, argv[2], strlen(argv[2]));
     }
-	if (send(sockfd, parametro, strlen(parametro), 0) == -1){
+	if (send(sockfd, parametro->s, str_cur_size(parametro), 0) == -1){
 		perror("send");
 		close(sockfd);
 		exit(0);
 	}
     
+    //Libera a string de parametros
+    str_free(parametro);
     //Imprime a resposta na tela, recebendo os dados do socket
     while(1){
         if((numbytes = recv(sockfd, buf, MAXDATASIZE-1,0)) >0){

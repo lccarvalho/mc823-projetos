@@ -13,7 +13,11 @@ char * infoDisciplinas();
 
 char * infoDisciplina(char * disc);
 
-char * programaDisciplina(char* disc); 
+char * programaDisciplina(char* disc);
+
+char *escreveComentario(char* disc, char* comentario);
+
+char *leComentario(char* disc);
 
 void uppercase(char* sPtr);
 

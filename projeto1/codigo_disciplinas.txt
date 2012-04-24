@@ -1,2 +1,2 @@
-MC548 - Análise de Algoritmos I
+MC548 - Análise de Algoritmos II
 MC823 - Laboratório de Redes
