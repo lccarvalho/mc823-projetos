@@ -9,6 +9,13 @@
 extern "C" {
 #endif
 
+    /* --------------------------------------------------------------------------*/
+    /**
+     * @Synopsis  
+     * Estrutura de dados para armezar strings, e operações com
+     * strings.
+     */
+    /* ----------------------------------------------------------------------------*/
 	struct str{
 		char *s;
 		size_t cur;

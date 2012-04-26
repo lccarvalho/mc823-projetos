@@ -1,12 +1,21 @@
-
-
-
 #include "resposta.h"
 #include<string.h>
 
 #define NUM_MAX_DISCIPLINAS 10
 #define TAM_MAX_NOME_DISCIPLINA 120
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função que recebe um parâmetro do cliente e, a partir disso, executa
+ * as rotinas apropriadas, preparando a resposta adequada a ser enviada ao
+ * cliente.
+ *
+ * @Param buf - string recebida pelo cliente
+ *
+ * @Returns string com a resposta esperada pelo cliente
+ */
+/* ----------------------------------------------------------------------------*/
 char * preparaResposta(char *buf) {
 	char *resposta;
     char *disc;
@@ -48,6 +57,17 @@ char * preparaResposta(char *buf) {
 }
 
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função que le os comentários escritos para uma certa disciplina,
+ * retornando-os.
+ *
+ * @Param disc - a sigla da disciplina
+ *
+ * @Returns uma string com todos os comentários da disciplina
+ */
+/* ----------------------------------------------------------------------------*/
 char* leComentario(char* disc){
     char *info, *resposta;
     int i, sub, cont=0, j=0;
@@ -73,9 +93,24 @@ char* leComentario(char* disc){
 
     return "Houve um erro ao obter o comentário.\n";
 }
+
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função que escreve um comentário enviado pelo cliente para o servidor. 
+ * A escrita do comentário se dá na disciplina passada pelo cliente, se
+ * existir.
+ *
+ * @Param disc - sigla da disciplina
+ * @Param comentario - comentário a ser escrito
+ *
+ * @Returns String com uma mensagem de sucesso, caso a escrita seja bem
+ * sucedida.
+ */
+/* ----------------------------------------------------------------------------*/
 char * escreveComentario( char *disc, char *comentario){
     FILE *fd;
-    char *text;
+    char text[10];
    /* Normaliza e obtem o nome do arquivo correspondente
      * a disciplina passada como parametro*/
     uppercase(disc);
@@ -94,6 +129,14 @@ char * escreveComentario( char *disc, char *comentario){
         return "Comentário escrito com sucesso!\n";
     }
 }
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função que lista todas as disciplinas cadastradas no servidor.
+ *
+ * @Returns string com as siglas e nomes das disciplinas cadastradas.
+ */
+/* ----------------------------------------------------------------------------*/
 char * listaDisciplinas(){
     FILE *fd;
 	string str;
@@ -129,27 +172,17 @@ char * listaDisciplinas(){
     return str->s; 
 }
 
-
-char* retiraSubstring( char* str, int lenstr, char* sub, int lensub){
-    int i, cont=0, j=0;
-    char *novastr;
-
-    for (i = 0; i < lenstr; i++) {
-        if((str[i]==sub[j]) && (sub[j] != '\0')){
-            cont++;
-            j++;
-            if(cont == (lensub-1)){
-                novastr = strndup(str, i - j);
-                return novastr;
-            }
-        }
-        else if(sub[j] != '\0'){
-            cont=0;
-            j=0;
-        }
-    }
-    return "";
-}
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função que retorna ao cliente o programa de uma determinada disciplina,
+ * se essa existir.
+ *
+ * @Param disc - a sigla da disciplina requisitada
+ *
+ * @Returns   string com o programa da disciplina
+ */
+/* ----------------------------------------------------------------------------*/
 char* programaDisciplina(char* disc){
     
     FILE *fd;
@@ -177,7 +210,7 @@ char* programaDisciplina(char* disc){
         
         /* Le o titulo da disciplina */
         fgets(tmp, sizeof(tmp), fd);
-        //printf("%s\n", tmp);
+
         str_concat_chararr(str, tmp, sizeof(tmp) -1);
 
         /* Le o resto do arquivo */
@@ -187,13 +220,7 @@ char* programaDisciplina(char* disc){
             /* Imprime a linha lida */
             while(pch !=NULL){
                 /* Para a impressao caso se depare com a palavra "Horário:" */
-                /*  if(!verificaSubstring(pch, strlen(pch), "Horário:", strlen("Horário:"))){
-                    fclose(fd);
-                    char *substr = retiraSubstring(pch, strlen(pch), "Horário:", strlen("Horário:"));
-                    str_concat_chararr(str, substr, strlen(substr));
-                    str_concat_chararr(str,"\n", sizeof(char));
-                    return str->s;
-                }*/
+                
                 if(strcmp(pch, "Horário:\n") ==0){
                     str_concat_chararr(str, "\n", sizeof(char));
                     fclose(fd);
@@ -219,6 +246,15 @@ char* programaDisciplina(char* disc){
 
 
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função que retorna as informações de todas as disciplinas cadastradas no
+ * servidor.
+ *
+ * @Returns Uma string com as informações de todas as disciplinas  
+ */
+/* ----------------------------------------------------------------------------*/
 char* infoDisciplinas(){
     
     FILE *fd, *nomefd;
@@ -281,6 +317,17 @@ char* infoDisciplinas(){
     }
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função que retorna ao cliente todas as informações de uma disciplina
+ * requisitada, se essa existir.
+ *
+ * @Param disc - a sigla da disciplina
+ *
+ * @Returns   string com todas as informações sobre a disciplina
+ */
+/* ----------------------------------------------------------------------------*/
 char* infoDisciplina(char* disc){
     
     FILE *fd;
@@ -308,7 +355,7 @@ char* infoDisciplina(char* disc){
         
         /* Le o titulo da disciplina */
         fgets(tmp, sizeof(tmp), fd);
-        //printf("%s\n", tmp);
+
         str_concat_chararr(str, tmp, sizeof(tmp) -1);
 
         /* Le o resto do arquivo */
@@ -332,6 +379,15 @@ char* infoDisciplina(char* disc){
     }
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função auxiliar que converte todos os caracteres de uma string para letra
+ * maiúscula.
+ *
+ * @Param sPtr - String a ser padronizada
+ */
+/* ----------------------------------------------------------------------------*/
 void uppercase(char* sPtr){
     int i=0;
     while (sPtr[i]) {
@@ -339,24 +395,3 @@ void uppercase(char* sPtr){
         i++;
     }
 }
-
-int verificaSubstring( char* str, int lenstr, char* sub, int lensub){
-    int i, j=0, cont=0;
-
-
-    for (i = 0; i < lenstr; i++) {
-         if((str[i] == sub[j]) && (sub[j] != '\0')){
-             cont++;
-             j++;
-             if(cont == (lensub-1)){
-                return 0;
-             }
-         }
-         else if(sub[j] != '\0'){
-             cont =0;
-             j = 0;
-         }
-    }
-    return 1;
-}
-

@@ -25,12 +25,30 @@
 
 
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função auxiliar para controlar os processos filhos
+ *
+ * @Param s - flag 
+ */
+/* ----------------------------------------------------------------------------*/
 void sigchld_handler(int s)
 {
 	while(waitpid(-1, NULL, WNOHANG) > 0);
 }
 
-// get sockaddr, IPv4 or IPv6:
+// get sockaddr, IPv4 or IPv6
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função que obtem o endereço do socket
+ *
+ * @Param sa - estrutura de dados do tipo sockaddr
+ *
+ * @Returns   endereço do socket (IPv4 ou IPv6)
+ */
+/* ----------------------------------------------------------------------------*/
 void *get_in_addr(struct sockaddr *sa)
 {
 	if (sa->sa_family == AF_INET) {
@@ -40,6 +58,17 @@ void *get_in_addr(struct sockaddr *sa)
 	return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função que controla o fluxo de execução do servidor, recebendo os parâmetros
+ * passados pelo cliente, montando uma resposta de acordo com esses parâmetros,
+ * e devolvendo essa resposta ao cliente
+ *
+ * @Returns  inteiro indicando se o fluxo de execução do programa foi bem
+ * sucedido 
+ */
+/* ----------------------------------------------------------------------------*/
 int main(void)
 {
 	int sockfd, new_fd;  // listen on sock_fd, new connection on new_fd

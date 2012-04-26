@@ -22,6 +22,12 @@
 #define MAXDATASIZE 100 // max number of bytes we can get at once 
 
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função auxiliar que imprime o modo de usar o programa
+ */
+/* ----------------------------------------------------------------------------*/
 void printUsage() {
     printf("\nclient.o  [porta] [comando] [param] [texto]\n");
     
@@ -41,6 +47,16 @@ void printUsage() {
 
 
 // get sockaddr, IPv4 or IPv6:
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função que obtem o endereço do socket
+ *
+ * @Param sa - estrutura de dados do tipo sockaddr
+ *
+ * @Returns   endereço do socket (IPv4 ou IPv6)
+ */
+/* ----------------------------------------------------------------------------*/
 void *get_in_addr(struct sockaddr *sa)
 {
 	if (sa->sa_family == AF_INET) {
@@ -50,6 +66,19 @@ void *get_in_addr(struct sockaddr *sa)
 	return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função principal do cliente, que recebe parâmetros e os repassa ao
+ * servidor usando as funções send, e recupera a resposta do servidor usando
+ * a função send, imprimindo-a então na tela.
+ *
+ * @Param argc - número de argumentos passados
+ * @Param argv[] - argumentos passados
+ *
+ * @Returns   inteiro representando o sucesso da execução
+ */
+/* ----------------------------------------------------------------------------*/
 int main(int argc, char *argv[])
 {
 	int sockfd, numbytes;  
@@ -143,6 +172,7 @@ int main(int argc, char *argv[])
         }
         else if(numbytes <0 && errno != EINTR){
             perror("recv");
+            close(sockfd);
             exit(1);
         }
         else if(numbytes == 0){
