@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$str_8c.html#a47d6c89b7dacac751de1965e2ee90189" title="str_free_size" alt="" coords="199,7,300,36"/>
+<area shape="rect" id="node7" href="$str_8c.html#ae20e94ac638a09b2cd12680cbdae2910" title="str_max_size" alt="" coords="349,59,456,88"/>
+<area shape="rect" id="node10" href="$mm_8c.html#a93a8ec6e8a6eef0f62b7e5b50d0bf9e4" title="xrealloc" alt="" coords="215,111,284,140"/>
+<area shape="rect" id="node5" href="$str_8c.html#a0df87a68167272d6191fd0fcef787752" title="str_cur_size" alt="" coords="353,5,452,35"/>
+</map>

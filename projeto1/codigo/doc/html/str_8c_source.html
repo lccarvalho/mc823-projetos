@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>MC823 - Laboratório de Redes: Trabalho 01: Código-Fonte de str.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Gerado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">MC823 - Laboratório de Redes: Trabalho 01</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">str.c</div>  </div>
+</div>
+<div class="contents">
+<a href="str_8c.html">Vá para a documentação deste arquivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="mm_8h.html">mm.h</a>&quot;</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &quot;<a class="code" href="str_8h.html">str.h</a>&quot;</span>
+<a name="l00003"></a>00003 
+<a name="l00004"></a>00004 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00013"></a>00013 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00014"></a><a class="code" href="str_8h.html#a43e9efab3e78f169462b9f842c827fba">00014</a> <span class="keywordtype">string</span> <a class="code" href="str_8c.html#a43e9efab3e78f169462b9f842c827fba">str_initialize</a>(<span class="keywordtype">size_t</span> size) {
+<a name="l00015"></a>00015     <span class="keywordtype">string</span> <a class="code" href="structstr.html">str</a>;
+<a name="l00016"></a>00016     str = (<a class="code" href="str_8h.html#a7d94dc8a8cdc32f0385ef28d8c511c52">string</a>) <a class="code" href="mm_8c.html#a42ccfa6fc49cc4ce90cc44cd05052490">xmalloc</a>(<span class="keyword">sizeof</span> (<span class="keyword">struct</span> str));
+<a name="l00017"></a>00017     str-&gt;<a class="code" href="structstr.html#a047d84b55a2d3a9ef7fae84aec97fef2">cur</a> = 0;
+<a name="l00018"></a>00018     str-&gt;<a class="code" href="structstr.html#ab653cd97c58cb798ab3e7e6c40e9f1df">max</a> = size;
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020     <span class="keywordflow">if</span> (size != 0) {
+<a name="l00021"></a>00021         str-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a> = (<span class="keywordtype">char</span>*) <a class="code" href="mm_8c.html#a42ccfa6fc49cc4ce90cc44cd05052490">xmalloc</a>((size + 1) * <span class="keyword">sizeof</span> (char));
+<a name="l00022"></a>00022         str-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a>[0] = <span class="charliteral">&#39;\0&#39;</span>;
+<a name="l00023"></a>00023     } <span class="keywordflow">else</span> str-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a> = NULL;
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025     <span class="keywordflow">return</span> str;
+<a name="l00026"></a>00026 }
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00037"></a>00037 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00038"></a><a class="code" href="str_8h.html#a5ca723b0fa09efed3e009b907daa44ca">00038</a> <span class="keywordtype">int</span> <a class="code" href="str_8c.html#a4aa5d752bfb8c556b3566f0b85b07d4d">str_free</a>(<span class="keywordtype">string</span> <a class="code" href="structstr.html">str</a>) {
+<a name="l00039"></a>00039     <span class="keywordflow">if</span> (str == NULL)
+<a name="l00040"></a>00040         <span class="keywordflow">return</span> 0;
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042     <span class="keywordflow">if</span> (str-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a> != NULL) {
+<a name="l00043"></a>00043         free(str-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a>);
+<a name="l00044"></a>00044     }
+<a name="l00045"></a>00045     free(str);
+<a name="l00046"></a>00046     <span class="keywordflow">return</span> 0;
+<a name="l00047"></a>00047 }
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00058"></a>00058 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00059"></a><a class="code" href="str_8h.html#a1dfa00642ae5f5be626f6d5e018fd6ad">00059</a> <span class="keywordtype">size_t</span> <a class="code" href="str_8c.html#ae20e94ac638a09b2cd12680cbdae2910">str_max_size</a>(<span class="keywordtype">string</span> <a class="code" href="structstr.html">str</a>) {
+<a name="l00060"></a>00060     <span class="keywordflow">return</span> str-&gt;<a class="code" href="structstr.html#ab653cd97c58cb798ab3e7e6c40e9f1df">max</a>;
+<a name="l00061"></a>00061 }
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00073"></a>00073 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00074"></a><a class="code" href="str_8h.html#a8b4c5d297194c9f1f57ca0e79ca31ba4">00074</a> <span class="keywordtype">size_t</span> <a class="code" href="str_8c.html#a0df87a68167272d6191fd0fcef787752">str_cur_size</a>(<span class="keywordtype">string</span> <a class="code" href="structstr.html">str</a>) {
+<a name="l00075"></a>00075     <span class="keywordflow">return</span> str-&gt;<a class="code" href="structstr.html#a047d84b55a2d3a9ef7fae84aec97fef2">cur</a>;
+<a name="l00076"></a>00076 }
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00088"></a>00088 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00089"></a><a class="code" href="str_8h.html#afa61b1760ef7da2de72524003044f203">00089</a> <span class="keywordtype">size_t</span> <a class="code" href="str_8c.html#a47d6c89b7dacac751de1965e2ee90189">str_free_size</a>(<span class="keywordtype">string</span> <a class="code" href="structstr.html">str</a>) {
+<a name="l00090"></a>00090     <span class="keywordflow">return</span> <a class="code" href="str_8c.html#ae20e94ac638a09b2cd12680cbdae2910">str_max_size</a>(str) - <a class="code" href="str_8c.html#a0df87a68167272d6191fd0fcef787752">str_cur_size</a>(str);
+<a name="l00091"></a>00091 }
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00105"></a>00105 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00106"></a><a class="code" href="str_8h.html#a0551d9da0243fc76764a50740d442547">00106</a> <span class="keywordtype">int</span> <a class="code" href="str_8c.html#a9c98046afe58b4d941f546c5a604a7de">str_concat_chararr</a>(<span class="keywordtype">string</span> to, <span class="keywordtype">char</span> *from, <span class="keywordtype">size_t</span> num) {
+<a name="l00107"></a>00107     <span class="keywordflow">if</span> (from == NULL)
+<a name="l00108"></a>00108         <span class="keywordflow">return</span> 0;
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110     <span class="keywordflow">if</span> (<a class="code" href="str_8c.html#a47d6c89b7dacac751de1965e2ee90189">str_free_size</a>(to) &lt; num) {
+<a name="l00111"></a>00111         <span class="keywordtype">int</span> newmaxsize = 2 * <a class="code" href="str_8c.html#ae20e94ac638a09b2cd12680cbdae2910">str_max_size</a>(to) + num + 1;
+<a name="l00112"></a>00112         to-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a> = (<span class="keywordtype">char</span>*) <a class="code" href="mm_8c.html#a93a8ec6e8a6eef0f62b7e5b50d0bf9e4">xrealloc</a>(to-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a>, newmaxsize);
+<a name="l00113"></a>00113         to-&gt;<a class="code" href="structstr.html#ab653cd97c58cb798ab3e7e6c40e9f1df">max</a> = newmaxsize;
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115     }
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117     strncat(to-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a>, from, num * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>));
+<a name="l00118"></a>00118     to-&gt;<a class="code" href="structstr.html#a047d84b55a2d3a9ef7fae84aec97fef2">cur</a> += num;
+<a name="l00119"></a>00119     to-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a>[to-&gt;<a class="code" href="structstr.html#a047d84b55a2d3a9ef7fae84aec97fef2">cur</a>] = <span class="charliteral">&#39;\0&#39;</span>;
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121     <span class="keywordflow">return</span> 0;
+<a name="l00122"></a>00122 }
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00134"></a>00134 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00135"></a><a class="code" href="str_8h.html#afb165027543e6d9d230117702acdadd0">00135</a> <span class="keywordtype">int</span> <a class="code" href="str_8c.html#afb165027543e6d9d230117702acdadd0">str_concat_str</a>(<span class="keywordtype">string</span> to, <span class="keywordtype">string</span> from) {
+<a name="l00136"></a>00136     <span class="keywordflow">return</span> <a class="code" href="str_8c.html#a9c98046afe58b4d941f546c5a604a7de">str_concat_chararr</a>(to, from-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a>, from-&gt;<a class="code" href="structstr.html#a047d84b55a2d3a9ef7fae84aec97fef2">cur</a>);
+<a name="l00137"></a>00137 }
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00151"></a>00151 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00152"></a><a class="code" href="str_8h.html#a0eb24b63eea1db24c63a7d9d1f13aa4d">00152</a> <span class="keywordtype">int</span> <a class="code" href="str_8c.html#a0eb24b63eea1db24c63a7d9d1f13aa4d">str_cmp_str_chararr</a>(<span class="keywordtype">string</span> <a class="code" href="structstr.html">str</a>, <span class="keywordtype">char</span> *elt, <span class="keywordtype">size_t</span> size) {
+<a name="l00153"></a>00153     <span class="keywordflow">if</span> (((<span class="keywordtype">string</span>) str)-&gt;cur != size)
+<a name="l00154"></a>00154         <span class="keywordflow">return</span> 0;
+<a name="l00155"></a>00155     <span class="keywordflow">return</span> memcpy(((<span class="keywordtype">string</span>) str)-&gt;s, elt, ((<span class="keywordtype">string</span>) str)-&gt;cur * <span class="keyword">sizeof</span> (<span class="keywordtype">char</span>));
+<a name="l00156"></a>00156 }
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00168"></a>00168 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00169"></a><a class="code" href="str_8h.html#a0a559f5efb08d64139c019b1d559fa68">00169</a> <span class="keywordtype">int</span> <a class="code" href="str_8c.html#a0a559f5efb08d64139c019b1d559fa68">str_cmp_str_str</a>(<span class="keywordtype">string</span> str1, <span class="keywordtype">string</span> str2){
+<a name="l00170"></a>00170     <span class="comment">//the arguments must be in the order below</span>
+<a name="l00171"></a>00171     <span class="keywordflow">return</span> <a class="code" href="str_8c.html#a0eb24b63eea1db24c63a7d9d1f13aa4d">str_cmp_str_chararr</a>(str1,str2-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a>,str2-&gt;<a class="code" href="structstr.html#a047d84b55a2d3a9ef7fae84aec97fef2">cur</a>);
+<a name="l00172"></a>00172 }
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estruturas de Dados</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definições de Tipos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definições e Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Gerado em Quarta, 25 de Abril de 2012 23:42:04 para MC823 - Laboratório de Redes: Trabalho 01 por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>

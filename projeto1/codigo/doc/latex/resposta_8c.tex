@@ -1,0 +1,375 @@
+\hypertarget{resposta_8c}{
+\section{Referência do Arquivo resposta.c}
+\label{resposta_8c}\index{resposta.c@{resposta.c}}
+}
+{\ttfamily \#include \char`\"{}resposta.h\char`\"{}}\par
+{\ttfamily \#include $<$string.h$>$}\par
+Gráfico de dependência de inclusões para resposta.c:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{resposta_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Definições e Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{resposta_8c_a281d136eba7bc38021f2fccbf61a633f}{NUM\_\-MAX\_\-DISCIPLINAS}~10
+\item 
+\#define \hyperlink{resposta_8c_a5d429b813e4525632cd4064f5e47213e}{TAM\_\-MAX\_\-NOME\_\-DISCIPLINA}~120
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{resposta_8c_a9bb7e31e6340d62b3afb839655847563}{preparaResposta} (char $\ast$buf)
+\item 
+char $\ast$ \hyperlink{resposta_8c_a2a098bc71f2a19dd74318fd778676979}{leComentario} (char $\ast$disc)
+\item 
+char $\ast$ \hyperlink{resposta_8c_a2b6f397b0bfae5590b292d282513c54b}{escreveComentario} (char $\ast$disc, char $\ast$comentario)
+\item 
+char $\ast$ \hyperlink{resposta_8c_adca402fde30bac4845d32a7dd4e6160a}{listaDisciplinas} ()
+\item 
+char $\ast$ \hyperlink{resposta_8c_ae53e5d927eddd073efa7dd3777c222c2}{programaDisciplina} (char $\ast$disc)
+\item 
+char $\ast$ \hyperlink{resposta_8c_aae0e9c217f1ede36bbf9821b36bba3f9}{infoDisciplinas} ()
+\item 
+char $\ast$ \hyperlink{resposta_8c_a6c04d45a3b24b43c86d50889bde25d67}{infoDisciplina} (char $\ast$disc)
+\item 
+void \hyperlink{resposta_8c_aaf2c986b7320373a463f607a67c07365}{uppercase} (char $\ast$sPtr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Definições e macros}
+\hypertarget{resposta_8c_a281d136eba7bc38021f2fccbf61a633f}{
+\index{resposta.c@{resposta.c}!NUM\_\-MAX\_\-DISCIPLINAS@{NUM\_\-MAX\_\-DISCIPLINAS}}
+\index{NUM\_\-MAX\_\-DISCIPLINAS@{NUM\_\-MAX\_\-DISCIPLINAS}!resposta.c@{resposta.c}}
+\subsubsection[{NUM\_\-MAX\_\-DISCIPLINAS}]{\setlength{\rightskip}{0pt plus 5cm}\#define NUM\_\-MAX\_\-DISCIPLINAS~10}}
+\label{resposta_8c_a281d136eba7bc38021f2fccbf61a633f}
+
+
+Definição na linha 4 do arquivo resposta.c.
+
+\hypertarget{resposta_8c_a5d429b813e4525632cd4064f5e47213e}{
+\index{resposta.c@{resposta.c}!TAM\_\-MAX\_\-NOME\_\-DISCIPLINA@{TAM\_\-MAX\_\-NOME\_\-DISCIPLINA}}
+\index{TAM\_\-MAX\_\-NOME\_\-DISCIPLINA@{TAM\_\-MAX\_\-NOME\_\-DISCIPLINA}!resposta.c@{resposta.c}}
+\subsubsection[{TAM\_\-MAX\_\-NOME\_\-DISCIPLINA}]{\setlength{\rightskip}{0pt plus 5cm}\#define TAM\_\-MAX\_\-NOME\_\-DISCIPLINA~120}}
+\label{resposta_8c_a5d429b813e4525632cd4064f5e47213e}
+
+
+Definição na linha 5 do arquivo resposta.c.
+
+
+
+\subsection{Funções}
+\hypertarget{resposta_8c_a2b6f397b0bfae5590b292d282513c54b}{
+\index{resposta.c@{resposta.c}!escreveComentario@{escreveComentario}}
+\index{escreveComentario@{escreveComentario}!resposta.c@{resposta.c}}
+\subsubsection[{escreveComentario}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ escreveComentario (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{disc, }
+\item[{char $\ast$}]{comentario}
+\end{DoxyParamCaption}
+)}}
+\label{resposta_8c_a2b6f397b0bfae5590b292d282513c54b}
+Função que escreve um comentário enviado pelo cliente para o servidor. A escrita do comentário se dá na disciplina passada pelo cliente, se existir.
+
+disc -\/ sigla da disciplina  comentario -\/ comentário a ser escrito
+
+String com uma mensagem de sucesso, caso a escrita seja bem sucedida. 
+
+Definição na linha 111 do arquivo resposta.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{resposta_8c_a2b6f397b0bfae5590b292d282513c54b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{resposta_8c_a2b6f397b0bfae5590b292d282513c54b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{resposta_8c_a6c04d45a3b24b43c86d50889bde25d67}{
+\index{resposta.c@{resposta.c}!infoDisciplina@{infoDisciplina}}
+\index{infoDisciplina@{infoDisciplina}!resposta.c@{resposta.c}}
+\subsubsection[{infoDisciplina}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ infoDisciplina (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{disc}
+\end{DoxyParamCaption}
+)}}
+\label{resposta_8c_a6c04d45a3b24b43c86d50889bde25d67}
+Função que retorna ao cliente todas as informações de uma disciplina requisitada, se essa existir.
+
+disc -\/ a sigla da disciplina
+
+string com todas as informações sobre a disciplina 
+
+Definição na linha 331 do arquivo resposta.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{resposta_8c_a6c04d45a3b24b43c86d50889bde25d67_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{resposta_8c_a6c04d45a3b24b43c86d50889bde25d67_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{resposta_8c_aae0e9c217f1ede36bbf9821b36bba3f9}{
+\index{resposta.c@{resposta.c}!infoDisciplinas@{infoDisciplinas}}
+\index{infoDisciplinas@{infoDisciplinas}!resposta.c@{resposta.c}}
+\subsubsection[{infoDisciplinas}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ infoDisciplinas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{resposta_8c_aae0e9c217f1ede36bbf9821b36bba3f9}
+Função que retorna as informações de todas as disciplinas cadastradas no servidor.
+
+Uma string com as informações de todas as disciplinas 
+
+Definição na linha 258 do arquivo resposta.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{resposta_8c_aae0e9c217f1ede36bbf9821b36bba3f9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=376pt]{resposta_8c_aae0e9c217f1ede36bbf9821b36bba3f9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{resposta_8c_a2a098bc71f2a19dd74318fd778676979}{
+\index{resposta.c@{resposta.c}!leComentario@{leComentario}}
+\index{leComentario@{leComentario}!resposta.c@{resposta.c}}
+\subsubsection[{leComentario}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ leComentario (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{disc}
+\end{DoxyParamCaption}
+)}}
+\label{resposta_8c_a2a098bc71f2a19dd74318fd778676979}
+Função que le os comentários escritos para uma certa disciplina, retornando-\/os.
+
+disc -\/ a sigla da disciplina
+
+uma string com todos os comentários da disciplina 
+
+Definição na linha 71 do arquivo resposta.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{resposta_8c_a2a098bc71f2a19dd74318fd778676979_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=374pt]{resposta_8c_a2a098bc71f2a19dd74318fd778676979_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{resposta_8c_adca402fde30bac4845d32a7dd4e6160a}{
+\index{resposta.c@{resposta.c}!listaDisciplinas@{listaDisciplinas}}
+\index{listaDisciplinas@{listaDisciplinas}!resposta.c@{resposta.c}}
+\subsubsection[{listaDisciplinas}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ listaDisciplinas (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{resposta_8c_adca402fde30bac4845d32a7dd4e6160a}
+Função que lista todas as disciplinas cadastradas no servidor.
+
+string com as siglas e nomes das disciplinas cadastradas. 
+
+Definição na linha 140 do arquivo resposta.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{resposta_8c_adca402fde30bac4845d32a7dd4e6160a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=378pt]{resposta_8c_adca402fde30bac4845d32a7dd4e6160a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{resposta_8c_a9bb7e31e6340d62b3afb839655847563}{
+\index{resposta.c@{resposta.c}!preparaResposta@{preparaResposta}}
+\index{preparaResposta@{preparaResposta}!resposta.c@{resposta.c}}
+\subsubsection[{preparaResposta}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ preparaResposta (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buf}
+\end{DoxyParamCaption}
+)}}
+\label{resposta_8c_a9bb7e31e6340d62b3afb839655847563}
+Função que recebe um parâmetro do cliente e, a partir disso, executa as rotinas apropriadas, preparando a resposta adequada a ser enviada ao cliente.
+
+buf -\/ string recebida pelo cliente
+
+string com a resposta esperada pelo cliente 
+
+Definição na linha 19 do arquivo resposta.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{resposta_8c_a9bb7e31e6340d62b3afb839655847563_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{resposta_8c_a9bb7e31e6340d62b3afb839655847563_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{resposta_8c_ae53e5d927eddd073efa7dd3777c222c2}{
+\index{resposta.c@{resposta.c}!programaDisciplina@{programaDisciplina}}
+\index{programaDisciplina@{programaDisciplina}!resposta.c@{resposta.c}}
+\subsubsection[{programaDisciplina}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ programaDisciplina (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{disc}
+\end{DoxyParamCaption}
+)}}
+\label{resposta_8c_ae53e5d927eddd073efa7dd3777c222c2}
+Função que retorna ao cliente o programa de uma determinada disciplina, se essa existir.
+
+disc -\/ a sigla da disciplina requisitada
+
+string com o programa da disciplina 
+
+Definição na linha 186 do arquivo resposta.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{resposta_8c_ae53e5d927eddd073efa7dd3777c222c2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{resposta_8c_ae53e5d927eddd073efa7dd3777c222c2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{resposta_8c_aaf2c986b7320373a463f607a67c07365}{
+\index{resposta.c@{resposta.c}!uppercase@{uppercase}}
+\index{uppercase@{uppercase}!resposta.c@{resposta.c}}
+\subsubsection[{uppercase}]{\setlength{\rightskip}{0pt plus 5cm}void uppercase (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{sPtr}
+\end{DoxyParamCaption}
+)}}
+\label{resposta_8c_aaf2c986b7320373a463f607a67c07365}
+Função auxiliar que converte todos os caracteres de uma string para letra maiúscula.
+
+sPtr -\/ String a ser padronizada 
+
+Definição na linha 391 do arquivo resposta.c.
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{resposta_8c_aaf2c986b7320373a463f607a67c07365_icgraph}
+\end{center}
+\end{figure}
+
+

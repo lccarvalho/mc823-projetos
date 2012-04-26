@@ -1,0 +1,20 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$tempo_8c.html#afa8cb739ea2c6f04b660789e2e36e9ee" title="calculaTempo" alt="" coords="121,29,228,59"/>
+<area shape="rect" id="node5" href="$beejClient_8c.html#a294867ba9d7ff47e39d421134d8e12ab" title="get_in_addr" alt="" coords="127,83,223,112"/>
+<area shape="rect" id="node7" href="$resposta_8c.html#a9bb7e31e6340d62b3afb839655847563" title="preparaResposta" alt="" coords="109,136,240,165"/>
+<area shape="rect" id="node48" href="$beejServer_8c.html#a6c2d9589ac70568b8e3a6980bb3d45d6" title="sigchld_handler" alt="" coords="115,189,235,219"/>
+<area shape="rect" id="node9" href="$resposta_8c.html#a2b6f397b0bfae5590b292d282513c54b" title="escreveComentario" alt="" coords="288,5,435,35"/>
+<area shape="rect" id="node13" href="$resposta_8c.html#a6c04d45a3b24b43c86d50889bde25d67" title="infoDisciplina" alt="" coords="504,104,608,133"/>
+<area shape="rect" id="node31" href="$resposta_8c.html#aae0e9c217f1ede36bbf9821b36bba3f9" title="infoDisciplinas" alt="" coords="500,157,612,187"/>
+<area shape="rect" id="node36" href="$resposta_8c.html#a2a098bc71f2a19dd74318fd778676979" title="leComentario" alt="" coords="308,109,415,139"/>
+<area shape="rect" id="node39" href="$resposta_8c.html#adca402fde30bac4845d32a7dd4e6160a" title="listaDisciplinas" alt="" coords="499,264,613,293"/>
+<area shape="rect" id="node43" href="$resposta_8c.html#ae53e5d927eddd073efa7dd3777c222c2" title="programaDisciplina" alt="" coords="484,211,628,240"/>
+<area shape="rect" id="node11" href="$resposta_8c.html#aaf2c986b7320373a463f607a67c07365" title="uppercase" alt="" coords="705,104,793,133"/>
+<area shape="rect" id="node15" href="$str_8c.html#a9c98046afe58b4d941f546c5a604a7de" title="str_concat_chararr" alt="" coords="679,211,820,240"/>
+<area shape="rect" id="node26" href="$str_8c.html#a43e9efab3e78f169462b9f842c827fba" title="str_initialize" alt="" coords="701,157,797,187"/>
+<area shape="rect" id="node17" href="$str_8c.html#a47d6c89b7dacac751de1965e2ee90189" title="str_free_size" alt="" coords="871,237,972,267"/>
+<area shape="rect" id="node21" href="$str_8c.html#ae20e94ac638a09b2cd12680cbdae2910" title="str_max_size" alt="" coords="1021,289,1128,319"/>
+<area shape="rect" id="node24" href="$mm_8c.html#a93a8ec6e8a6eef0f62b7e5b50d0bf9e4" title="xrealloc" alt="" coords="887,184,956,213"/>
+<area shape="rect" id="node19" href="$str_8c.html#a0df87a68167272d6191fd0fcef787752" title="str_cur_size" alt="" coords="1025,236,1124,265"/>
+<area shape="rect" id="node28" href="$mm_8c.html#a42ccfa6fc49cc4ce90cc44cd05052490" title="xmalloc" alt="" coords="887,131,956,160"/>
+</map>

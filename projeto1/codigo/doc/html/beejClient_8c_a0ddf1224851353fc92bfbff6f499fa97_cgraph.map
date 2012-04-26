@@ -1,0 +1,13 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$tempo_8c.html#afa8cb739ea2c6f04b660789e2e36e9ee" title="calculaTempo" alt="" coords="128,5,235,35"/>
+<area shape="rect" id="node5" href="$beejClient_8c.html#a294867ba9d7ff47e39d421134d8e12ab" title="get_in_addr" alt="" coords="133,59,229,88"/>
+<area shape="rect" id="node7" href="$beejClient_8c.html#aead97c99e70c0da7036fbbe230ef68b6" title="printUsage" alt="" coords="136,112,227,141"/>
+<area shape="rect" id="node9" href="$str_8c.html#a9c98046afe58b4d941f546c5a604a7de" title="str_concat_chararr" alt="" coords="111,165,252,195"/>
+<area shape="rect" id="node13" href="$str_8c.html#a0df87a68167272d6191fd0fcef787752" title="str_cur_size" alt="" coords="457,165,556,195"/>
+<area shape="rect" id="node21" href="$str_8c.html#a4aa5d752bfb8c556b3566f0b85b07d4d" title="str_free" alt="" coords="147,269,216,299"/>
+<area shape="rect" id="node23" href="$str_8c.html#a43e9efab3e78f169462b9f842c827fba" title="str_initialize" alt="" coords="133,323,229,352"/>
+<area shape="rect" id="node11" href="$str_8c.html#a47d6c89b7dacac751de1965e2ee90189" title="str_free_size" alt="" coords="303,112,404,141"/>
+<area shape="rect" id="node15" href="$str_8c.html#ae20e94ac638a09b2cd12680cbdae2910" title="str_max_size" alt="" coords="453,87,560,116"/>
+<area shape="rect" id="node18" href="$mm_8c.html#a93a8ec6e8a6eef0f62b7e5b50d0bf9e4" title="xrealloc" alt="" coords="319,165,388,195"/>
+<area shape="rect" id="node25" href="$mm_8c.html#a42ccfa6fc49cc4ce90cc44cd05052490" title="xmalloc" alt="" coords="319,323,388,352"/>
+</map>

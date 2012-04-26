@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>MC823 - Laboratório de Redes: Trabalho 01: Código-Fonte de beejClient.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload='searchBox.OnSelectItem(0);'>
+<!-- Gerado por Doxygen 1.7.4 -->
+<script type="text/javascript"><!--
+var searchBox = new SearchBox("searchBox", "search",false,'Busca');
+--></script>
+<div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">MC823 - Laboratório de Redes: Trabalho 01</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;Dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+      <li id="searchli">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Busca" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+<div class="header">
+  <div class="headertitle">
+<div class="title">beejClient.c</div>  </div>
+</div>
+<div class="contents">
+<a href="beejClient_8c.html">Vá para a documentação deste arquivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/*</span>
+<a name="l00002"></a>00002 <span class="comment">** client.c -- a stream socket client demo</span>
+<a name="l00003"></a>00003 <span class="comment">*/</span>
+<a name="l00004"></a>00004 
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;stdio.h&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;unistd.h&gt;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;errno.h&gt;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;netdb.h&gt;</span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include &lt;sys/types.h&gt;</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include &lt;netinet/in.h&gt;</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;sys/socket.h&gt;</span>
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;arpa/inet.h&gt;</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="tempo_8h.html">tempo.h</a>&quot;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="str_8h.html">str.h</a>&quot;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="beejClient_8c.html#a614217d263be1fb1a5f76e2ff7be19a2">00020</a> <span class="preprocessor">#define PORT &quot;39410&quot; // the port client will be connecting to </span>
+<a name="l00021"></a>00021 <span class="preprocessor"></span>
+<a name="l00022"></a><a class="code" href="beejClient_8c.html#a16c16f9369be4a374a3e621f6d13bb16">00022</a> <span class="preprocessor">#define MAXDATASIZE 100 // max number of bytes we can get at once </span>
+<a name="l00023"></a>00023 <span class="preprocessor"></span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00030"></a>00030 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00031"></a><a class="code" href="beejClient_8c.html#aead97c99e70c0da7036fbbe230ef68b6">00031</a> <span class="keywordtype">void</span> <a class="code" href="beejClient_8c.html#aead97c99e70c0da7036fbbe230ef68b6">printUsage</a>() {
+<a name="l00032"></a>00032     printf(<span class="stringliteral">&quot;\nclient.o  [porta] [comando] [param] [texto]\n&quot;</span>);
+<a name="l00033"></a>00033     
+<a name="l00034"></a>00034    
+<a name="l00035"></a>00035     printf(<span class="stringliteral">&quot;\ncomandos:\n&quot;</span>);
+<a name="l00036"></a>00036     printf(<span class="stringliteral">&quot;\n    l : lista os codigos e nomes das disciplinas cadastradas&quot;</span>);
+<a name="l00037"></a>00037     printf(<span class="stringliteral">&quot;\n    p [param] : retorna o programa da disciplina [param]&quot;</span>);
+<a name="l00038"></a>00038     printf(<span class="stringliteral">&quot;\n    i [param] : retorna  todas as informacoes sobre a disciplina [param]&quot;</span>);
+<a name="l00039"></a>00039     printf(<span class="stringliteral">&quot;\n                 se [param] nao for fornecido, retorna todas as informacoes&quot;</span>);
+<a name="l00040"></a>00040     printf(<span class="stringliteral">&quot;\n                 de todas as disciplinas cadastradas&quot;</span>);
+<a name="l00041"></a>00041     printf(<span class="stringliteral">&quot;\n    w [param] [texto] : recebe e armazena o texto de um comentario sobre a proxima&quot;</span>);
+<a name="l00042"></a>00042     printf(<span class="stringliteral">&quot;\n                 aula da disciplina [param]&quot;</span>);
+<a name="l00043"></a>00043     printf(<span class="stringliteral">&quot;\n    c [param] : retorna o comentario armazenado sobre a proxima aula da&quot;</span>);
+<a name="l00044"></a>00044     printf(<span class="stringliteral">&quot;\n                 disciplina [param]\n&quot;</span>);
+<a name="l00045"></a>00045 } 
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="comment">// get sockaddr, IPv4 or IPv6:</span>
+<a name="l00050"></a>00050 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00059"></a>00059 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00060"></a><a class="code" href="beejClient_8c.html#a294867ba9d7ff47e39d421134d8e12ab">00060</a> <span class="keywordtype">void</span> *<a class="code" href="beejClient_8c.html#a294867ba9d7ff47e39d421134d8e12ab">get_in_addr</a>(<span class="keyword">struct</span> sockaddr *sa)
+<a name="l00061"></a>00061 {
+<a name="l00062"></a>00062     <span class="keywordflow">if</span> (sa-&gt;sa_family == AF_INET) {
+<a name="l00063"></a>00063         <span class="keywordflow">return</span> &amp;(((<span class="keyword">struct </span>sockaddr_in*)sa)-&gt;sin_addr);
+<a name="l00064"></a>00064     }
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066     <span class="keywordflow">return</span> &amp;(((<span class="keyword">struct </span>sockaddr_in6*)sa)-&gt;sin6_addr);
+<a name="l00067"></a>00067 }
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 <span class="comment">/* --------------------------------------------------------------------------*/</span>
+<a name="l00081"></a>00081 <span class="comment">/* ----------------------------------------------------------------------------*/</span>
+<a name="l00082"></a><a class="code" href="beejClient_8c.html#a0ddf1224851353fc92bfbff6f499fa97">00082</a> <span class="keywordtype">int</span> <a class="code" href="beejClient_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])
+<a name="l00083"></a>00083 {
+<a name="l00084"></a>00084     <span class="keywordtype">int</span> sockfd, numbytes;  
+<a name="l00085"></a>00085     <span class="keywordtype">char</span> buf[<a class="code" href="beejClient_8c.html#a16c16f9369be4a374a3e621f6d13bb16">MAXDATASIZE</a>];
+<a name="l00086"></a>00086     <span class="keyword">struct </span>addrinfo hints, *servinfo, *p;
+<a name="l00087"></a>00087     <span class="keywordtype">int</span> rv;
+<a name="l00088"></a>00088     <span class="keywordtype">char</span> s[INET6_ADDRSTRLEN];
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090     <span class="keyword">struct </span>timeval startTime; <span class="comment">//Estrutura contendo o tempo de início de execução</span>
+<a name="l00091"></a>00091     <span class="keyword">struct </span>timeval endTime; <span class="comment">//Estrutura contendo o tempo final de execução</span>
+<a name="l00092"></a>00092     <span class="keywordtype">double</span> time;
+<a name="l00093"></a>00093     <span class="keywordtype">string</span> parametro;<span class="comment">//Parametro a ser enviado para o servidor</span>
+<a name="l00094"></a>00094     <span class="keywordtype">char</span> *resposta; <span class="comment">//Resposta do servidor</span>
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096     <span class="keywordflow">if</span> (argc &lt; 3 || (argc !=5 &amp;&amp; argv[2][0] == <span class="charliteral">&#39;w&#39;</span>) || (argc == 3 &amp;&amp; argv[2][0] == <span class="charliteral">&#39;p&#39;</span>)) {
+<a name="l00097"></a>00097         <a class="code" href="beejClient_8c.html#aead97c99e70c0da7036fbbe230ef68b6">printUsage</a>();
+<a name="l00098"></a>00098         <span class="keywordflow">return</span> 0;
+<a name="l00099"></a>00099     }
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101     memset(&amp;hints, 0, <span class="keyword">sizeof</span> hints);
+<a name="l00102"></a>00102     hints.ai_family = AF_UNSPEC;
+<a name="l00103"></a>00103     hints.ai_socktype = SOCK_STREAM;
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105     <span class="keywordflow">if</span> ((rv = getaddrinfo(argv[1], <a class="code" href="beejClient_8c.html#a614217d263be1fb1a5f76e2ff7be19a2">PORT</a>, &amp;hints, &amp;servinfo)) != 0) {
+<a name="l00106"></a>00106         fprintf(stderr, <span class="stringliteral">&quot;getaddrinfo: %s\n&quot;</span>, gai_strerror(rv));
+<a name="l00107"></a>00107         <span class="keywordflow">return</span> 1;
+<a name="l00108"></a>00108     }
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110     <span class="comment">// loop through all the results and connect to the first we can</span>
+<a name="l00111"></a>00111     <span class="keywordflow">for</span>(p = servinfo; p != NULL; p = p-&gt;ai_next) {
+<a name="l00112"></a>00112         <span class="keywordflow">if</span> ((sockfd = socket(p-&gt;ai_family, p-&gt;ai_socktype,
+<a name="l00113"></a>00113                 p-&gt;ai_protocol)) == -1) {
+<a name="l00114"></a>00114             perror(<span class="stringliteral">&quot;client: socket&quot;</span>);
+<a name="l00115"></a>00115             <span class="keywordflow">continue</span>;
+<a name="l00116"></a>00116         }
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118         <span class="keywordflow">if</span> (connect(sockfd, p-&gt;ai_addr, p-&gt;ai_addrlen) == -1) {
+<a name="l00119"></a>00119             close(sockfd);
+<a name="l00120"></a>00120             perror(<span class="stringliteral">&quot;client: connect&quot;</span>);
+<a name="l00121"></a>00121             <span class="keywordflow">continue</span>;
+<a name="l00122"></a>00122         }
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124         <span class="keywordflow">break</span>;
+<a name="l00125"></a>00125     }
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127     <span class="keywordflow">if</span> (p == NULL) {
+<a name="l00128"></a>00128         fprintf(stderr, <span class="stringliteral">&quot;client: failed to connect\n&quot;</span>);
+<a name="l00129"></a>00129         <span class="keywordflow">return</span> 2;
+<a name="l00130"></a>00130     }
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132     inet_ntop(p-&gt;ai_family, <a class="code" href="beejClient_8c.html#a294867ba9d7ff47e39d421134d8e12ab">get_in_addr</a>((<span class="keyword">struct</span> sockaddr *)p-&gt;ai_addr),
+<a name="l00133"></a>00133             s, <span class="keyword">sizeof</span> s);
+<a name="l00134"></a>00134     printf(<span class="stringliteral">&quot;client: connecting to %s\n&quot;</span>, s);
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136     freeaddrinfo(servinfo); <span class="comment">// all done with this structure</span>
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138     <span class="comment">//Inicia a contagem de tempo, antes do write (send)</span>
+<a name="l00139"></a>00139     gettimeofday(&amp;startTime, NULL);
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141     <span class="comment">//Inicializa a string a ser enviada ao servidor</span>
+<a name="l00142"></a>00142     parametro = <a class="code" href="str_8c.html#a43e9efab3e78f169462b9f842c827fba">str_initialize</a>(((<span class="keywordtype">size_t</span>)<a class="code" href="beejClient_8c.html#a16c16f9369be4a374a3e621f6d13bb16">MAXDATASIZE</a>));
+<a name="l00143"></a>00143     <span class="comment">//Funções envolvendo disciplinas específicas</span>
+<a name="l00144"></a>00144     <span class="keywordflow">if</span>(argc == 4){
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146         <a class="code" href="str_8c.html#a9c98046afe58b4d941f546c5a604a7de">str_concat_chararr</a>(parametro, argv[2], strlen(argv[2]));
+<a name="l00147"></a>00147         <a class="code" href="str_8c.html#a9c98046afe58b4d941f546c5a604a7de">str_concat_chararr</a>(parametro, argv[3], strlen(argv[3])); 
+<a name="l00148"></a>00148     }
+<a name="l00149"></a>00149     <span class="comment">//Escrever comentário</span>
+<a name="l00150"></a>00150     <span class="keywordflow">else</span> <span class="keywordflow">if</span>(argc == 5){
+<a name="l00151"></a>00151         <a class="code" href="str_8c.html#a9c98046afe58b4d941f546c5a604a7de">str_concat_chararr</a>(parametro, argv[2], strlen(argv[2]));
+<a name="l00152"></a>00152         <a class="code" href="str_8c.html#a9c98046afe58b4d941f546c5a604a7de">str_concat_chararr</a>(parametro, argv[3], strlen(argv[3]));
+<a name="l00153"></a>00153         <a class="code" href="str_8c.html#a9c98046afe58b4d941f546c5a604a7de">str_concat_chararr</a>(parametro, argv[4], strlen(argv[4]));
+<a name="l00154"></a>00154     }
+<a name="l00155"></a>00155     <span class="keywordflow">else</span>{
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157         <a class="code" href="str_8c.html#a9c98046afe58b4d941f546c5a604a7de">str_concat_chararr</a>(parametro, argv[2], strlen(argv[2]));
+<a name="l00158"></a>00158     }
+<a name="l00159"></a>00159     <span class="keywordflow">if</span> (send(sockfd, parametro-&gt;<a class="code" href="structstr.html#a1fc4ce5d6a790001388349ca5b735383">s</a>, <a class="code" href="str_8c.html#a0df87a68167272d6191fd0fcef787752">str_cur_size</a>(parametro), 0) == -1){
+<a name="l00160"></a>00160         perror(<span class="stringliteral">&quot;send&quot;</span>);
+<a name="l00161"></a>00161         close(sockfd);
+<a name="l00162"></a>00162         exit(0);
+<a name="l00163"></a>00163     }
+<a name="l00164"></a>00164     
+<a name="l00165"></a>00165     <span class="comment">//Libera a string de parametros</span>
+<a name="l00166"></a>00166     <a class="code" href="str_8c.html#a4aa5d752bfb8c556b3566f0b85b07d4d">str_free</a>(parametro);
+<a name="l00167"></a>00167     <span class="comment">//Imprime a resposta na tela, recebendo os dados do socket</span>
+<a name="l00168"></a>00168     <span class="keywordflow">while</span>(1){
+<a name="l00169"></a>00169         <span class="keywordflow">if</span>((numbytes = recv(sockfd, buf, MAXDATASIZE-1,0)) &gt;0){
+<a name="l00170"></a>00170             resposta = strndup(buf, numbytes);
+<a name="l00171"></a>00171             printf(<span class="stringliteral">&quot;%s&quot;</span>, resposta);
+<a name="l00172"></a>00172         }
+<a name="l00173"></a>00173         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(numbytes &lt;0 &amp;&amp; errno != EINTR){
+<a name="l00174"></a>00174             perror(<span class="stringliteral">&quot;recv&quot;</span>);
+<a name="l00175"></a>00175             close(sockfd);
+<a name="l00176"></a>00176             exit(1);
+<a name="l00177"></a>00177         }
+<a name="l00178"></a>00178         <span class="keywordflow">else</span> <span class="keywordflow">if</span>(numbytes == 0){
+<a name="l00179"></a>00179             <span class="keywordflow">break</span>;
+<a name="l00180"></a>00180         }
+<a name="l00181"></a>00181     }               
+<a name="l00182"></a>00182     <span class="comment">//Termina a contagem de tempo, após o read (recv)</span>
+<a name="l00183"></a>00183     gettimeofday(&amp;endTime, NULL);
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185     time = <a class="code" href="tempo_8c.html#afa8cb739ea2c6f04b660789e2e36e9ee">calculaTempo</a>(startTime, endTime);
+<a name="l00186"></a>00186    
+<a name="l00187"></a>00187     printf(<span class="stringliteral">&quot;\nTotal time: %.2lf microseconds\n&quot;</span>, time);
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189     close(sockfd);
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191     <span class="keywordflow">return</span> 0;
+<a name="l00192"></a>00192 }
+<a name="l00193"></a>00193 
+</pre></div></div>
+</div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Todos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estruturas de Dados</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Arquivos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Definições de Tipos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Definições e Macros</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<hr class="footer"/><address class="footer"><small>Gerado em Quarta, 25 de Abril de 2012 23:42:04 para MC823 - Laboratório de Redes: Trabalho 01 por&#160;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.4 </small></address>
+</body>
+</html>
