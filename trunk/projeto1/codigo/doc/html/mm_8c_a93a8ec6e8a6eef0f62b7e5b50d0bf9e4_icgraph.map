@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$str_8h.html#a0551d9da0243fc76764a50740d442547" title="str_concat_chararr" alt="" coords="127,187,268,216"/>
+<area shape="rect" id="node5" href="$resposta_8h.html#a6c04d45a3b24b43c86d50889bde25d67" title="infoDisciplina" alt="" coords="323,57,427,87"/>
+<area shape="rect" id="node14" href="$resposta_8h.html#aae0e9c217f1ede36bbf9821b36bba3f9" title="infoDisciplinas" alt="" coords="497,109,609,139"/>
+<area shape="rect" id="node17" href="$resposta_8h.html#adca402fde30bac4845d32a7dd4e6160a" title="listaDisciplinas" alt="" coords="496,163,611,192"/>
+<area shape="rect" id="node20" href="$beejClient_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="348,212,401,241"/>
+<area shape="rect" id="node22" href="$resposta_8h.html#ae53e5d927eddd073efa7dd3777c222c2" title="programaDisciplina" alt="" coords="481,240,625,269"/>
+<area shape="rect" id="node25" href="$str_8h.html#afb165027543e6d9d230117702acdadd0" title="str_concat_str" alt="" coords="319,316,431,345"/>
+<area shape="rect" id="node7" href="$resposta_8h.html#a2a098bc71f2a19dd74318fd778676979" title="leComentario" alt="" coords="500,5,607,35"/>
+<area shape="rect" id="node9" href="$resposta_8h.html#a9bb7e31e6340d62b3afb839655847563" title="preparaResposta" alt="" coords="675,109,805,139"/>
+<area shape="rect" id="node11" href="$beejServer_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="855,109,908,139"/>
+</map>

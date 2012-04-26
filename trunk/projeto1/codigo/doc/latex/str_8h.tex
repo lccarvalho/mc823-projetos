@@ -1,0 +1,372 @@
+\hypertarget{str_8h}{
+\section{Referência do Arquivo str.h}
+\label{str_8h}\index{str.h@{str.h}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+Gráfico de dependência de inclusões para str.h:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{str_8h__incl}
+\end{center}
+\end{figure}
+Este grafo mostra quais arquivos estão direta ou indiretamente relacionados com este arquivo:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{str_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Estruturas de Dados}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structstr}{str}
+\end{DoxyCompactItemize}
+\subsection*{Definições de Tipos}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structstr}{str} $\ast$ \hyperlink{str_8h_a7d94dc8a8cdc32f0385ef28d8c511c52}{string}
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+size\_\-t \hyperlink{str_8h_a1dfa00642ae5f5be626f6d5e018fd6ad}{str\_\-max\_\-size} (\hyperlink{structstr}{string} \hyperlink{structstr}{string})
+\item 
+size\_\-t \hyperlink{str_8h_a8b4c5d297194c9f1f57ca0e79ca31ba4}{str\_\-cur\_\-size} (\hyperlink{structstr}{string} \hyperlink{structstr}{string})
+\item 
+size\_\-t \hyperlink{str_8h_afa61b1760ef7da2de72524003044f203}{str\_\-free\_\-size} (\hyperlink{structstr}{string} \hyperlink{structstr}{string})
+\item 
+\hyperlink{structstr}{string} \hyperlink{str_8h_a43e9efab3e78f169462b9f842c827fba}{str\_\-initialize} (size\_\-t size)
+\item 
+int \hyperlink{str_8h_a5ca723b0fa09efed3e009b907daa44ca}{str\_\-free} (\hyperlink{structstr}{string} \hyperlink{structstr}{string})
+\item 
+int \hyperlink{str_8h_a0551d9da0243fc76764a50740d442547}{str\_\-concat\_\-chararr} (\hyperlink{structstr}{string} to, char $\ast$from, size\_\-t size)
+\item 
+int \hyperlink{str_8h_afb165027543e6d9d230117702acdadd0}{str\_\-concat\_\-str} (\hyperlink{structstr}{string} to, \hyperlink{structstr}{string} from)
+\item 
+int \hyperlink{str_8h_a0eb24b63eea1db24c63a7d9d1f13aa4d}{str\_\-cmp\_\-str\_\-chararr} (\hyperlink{structstr}{string} \hyperlink{structstr}{str}, char $\ast$elt, size\_\-t size)
+\item 
+int \hyperlink{str_8h_a0a559f5efb08d64139c019b1d559fa68}{str\_\-cmp\_\-str\_\-str} (\hyperlink{structstr}{string} str1, \hyperlink{structstr}{string} str2)
+\end{DoxyCompactItemize}
+
+
+\subsection{Definições dos tipos}
+\hypertarget{str_8h_a7d94dc8a8cdc32f0385ef28d8c511c52}{
+\index{str.h@{str.h}!string@{string}}
+\index{string@{string}!str.h@{str.h}}
+\subsubsection[{string}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf str}$\ast$ {\bf string}}}
+\label{str_8h_a7d94dc8a8cdc32f0385ef28d8c511c52}
+
+
+Definição na linha 24 do arquivo str.h.
+
+
+
+\subsection{Funções}
+\hypertarget{str_8h_a0eb24b63eea1db24c63a7d9d1f13aa4d}{
+\index{str.h@{str.h}!str\_\-cmp\_\-str\_\-chararr@{str\_\-cmp\_\-str\_\-chararr}}
+\index{str\_\-cmp\_\-str\_\-chararr@{str\_\-cmp\_\-str\_\-chararr}!str.h@{str.h}}
+\subsubsection[{str\_\-cmp\_\-str\_\-chararr}]{\setlength{\rightskip}{0pt plus 5cm}int str\_\-cmp\_\-str\_\-chararr (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{str, }
+\item[{char $\ast$}]{elt, }
+\item[{size\_\-t}]{size}
+\end{DoxyParamCaption}
+)}}
+\label{str_8h_a0eb24b63eea1db24c63a7d9d1f13aa4d}
+Função auxiliar que compara uma estrutura do tipo string com uma string \char`\"{}padrao\char`\"{}.
+
+str -\/ estrutura do tipo string  elt -\/ string  size -\/ tamanho da string
+
+inteiro indicando sucesso ou fracasso 
+
+Definição na linha 152 do arquivo str.c.
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{str_8h_a0eb24b63eea1db24c63a7d9d1f13aa4d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{str_8h_a0a559f5efb08d64139c019b1d559fa68}{
+\index{str.h@{str.h}!str\_\-cmp\_\-str\_\-str@{str\_\-cmp\_\-str\_\-str}}
+\index{str\_\-cmp\_\-str\_\-str@{str\_\-cmp\_\-str\_\-str}!str.h@{str.h}}
+\subsubsection[{str\_\-cmp\_\-str\_\-str}]{\setlength{\rightskip}{0pt plus 5cm}int str\_\-cmp\_\-str\_\-str (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{str1, }
+\item[{{\bf string}}]{str2}
+\end{DoxyParamCaption}
+)}}
+\label{str_8h_a0a559f5efb08d64139c019b1d559fa68}
+Função auxiliar que compara duas estruturas do tipo string.
+
+str1 -\/ estrutura do tipo string  str2 -\/ estrutura do tipo string
+
+inteiro indicando sucesso ou fracasso 
+
+Definição na linha 169 do arquivo str.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{str_8h_a0a559f5efb08d64139c019b1d559fa68_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{str_8h_a0551d9da0243fc76764a50740d442547}{
+\index{str.h@{str.h}!str\_\-concat\_\-chararr@{str\_\-concat\_\-chararr}}
+\index{str\_\-concat\_\-chararr@{str\_\-concat\_\-chararr}!str.h@{str.h}}
+\subsubsection[{str\_\-concat\_\-chararr}]{\setlength{\rightskip}{0pt plus 5cm}int str\_\-concat\_\-chararr (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{to, }
+\item[{char $\ast$}]{from, }
+\item[{size\_\-t}]{num}
+\end{DoxyParamCaption}
+)}}
+\label{str_8h_a0551d9da0243fc76764a50740d442547}
+Função auxiliar que concatena uma string 'padrão' com uma estrutura do tipo string
+
+to -\/ estrutura do tipo string  from -\/ string  num -\/ tamanho da string a ser concatenada
+
+inteiro indicando sucesso ou fracasso. 
+
+Definição na linha 106 do arquivo str.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{str_8h_a0551d9da0243fc76764a50740d442547_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{str_8h_a0551d9da0243fc76764a50740d442547_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{str_8h_afb165027543e6d9d230117702acdadd0}{
+\index{str.h@{str.h}!str\_\-concat\_\-str@{str\_\-concat\_\-str}}
+\index{str\_\-concat\_\-str@{str\_\-concat\_\-str}!str.h@{str.h}}
+\subsubsection[{str\_\-concat\_\-str}]{\setlength{\rightskip}{0pt plus 5cm}int str\_\-concat\_\-str (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{to, }
+\item[{{\bf string}}]{from}
+\end{DoxyParamCaption}
+)}}
+\label{str_8h_afb165027543e6d9d230117702acdadd0}
+Função auxiliar que concatena duas estruturas do tipo string.
+
+to -\/ estrutura do tipo string a receber a concatenação  from -\/ estrutura do tipo string a ser concatenada
+
+inteiro indicando sucesso ou fracasso 
+
+Definição na linha 135 do arquivo str.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{str_8h_afb165027543e6d9d230117702acdadd0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{str_8h_a8b4c5d297194c9f1f57ca0e79ca31ba4}{
+\index{str.h@{str.h}!str\_\-cur\_\-size@{str\_\-cur\_\-size}}
+\index{str\_\-cur\_\-size@{str\_\-cur\_\-size}!str.h@{str.h}}
+\subsubsection[{str\_\-cur\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t str\_\-cur\_\-size (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{str}
+\end{DoxyParamCaption}
+)}}
+\label{str_8h_a8b4c5d297194c9f1f57ca0e79ca31ba4}
+Função auxiliar que indica o tamanho atual da estrutura do tipod string.
+
+str -\/ estrutura do tipo string
+
+inteiro representando o tamanho atual da string. 
+
+Definição na linha 74 do arquivo str.c.
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{str_8h_a8b4c5d297194c9f1f57ca0e79ca31ba4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{str_8h_a5ca723b0fa09efed3e009b907daa44ca}{
+\index{str.h@{str.h}!str\_\-free@{str\_\-free}}
+\index{str\_\-free@{str\_\-free}!str.h@{str.h}}
+\subsubsection[{str\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}int str\_\-free (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{str}
+\end{DoxyParamCaption}
+)}}
+\label{str_8h_a5ca723b0fa09efed3e009b907daa44ca}
+Função auxiliar que libera a memória alocada por uma string
+
+str -\/ estrutura do tipo string
+
+um inteiro descrevendo o sucesso ou falha 
+
+Definição na linha 38 do arquivo str.c.
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{str_8h_a5ca723b0fa09efed3e009b907daa44ca_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{str_8h_afa61b1760ef7da2de72524003044f203}{
+\index{str.h@{str.h}!str\_\-free\_\-size@{str\_\-free\_\-size}}
+\index{str\_\-free\_\-size@{str\_\-free\_\-size}!str.h@{str.h}}
+\subsubsection[{str\_\-free\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t str\_\-free\_\-size (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{str}
+\end{DoxyParamCaption}
+)}}
+\label{str_8h_afa61b1760ef7da2de72524003044f203}
+Função auxiliar que mostra quanto há de espaço livre na estrutura de dados do tipo string.
+
+str -\/ estrutura do tipo string
+
+inteiro representando quanto há de espaço livre 
+
+Definição na linha 89 do arquivo str.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{str_8h_afa61b1760ef7da2de72524003044f203_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{str_8h_afa61b1760ef7da2de72524003044f203_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{str_8h_a43e9efab3e78f169462b9f842c827fba}{
+\index{str.h@{str.h}!str\_\-initialize@{str\_\-initialize}}
+\index{str\_\-initialize@{str\_\-initialize}!str.h@{str.h}}
+\subsubsection[{str\_\-initialize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} str\_\-initialize (
+\begin{DoxyParamCaption}
+\item[{size\_\-t}]{size}
+\end{DoxyParamCaption}
+)}}
+\label{str_8h_a43e9efab3e78f169462b9f842c827fba}
+Função auxiliar que inicializa uma estrututura do tipo string.
+
+size -\/ tamanho da string a ser inicializada
+
+string inicializada 
+
+Definição na linha 14 do arquivo str.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{str_8h_a43e9efab3e78f169462b9f842c827fba_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{str_8h_a43e9efab3e78f169462b9f842c827fba_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{str_8h_a1dfa00642ae5f5be626f6d5e018fd6ad}{
+\index{str.h@{str.h}!str\_\-max\_\-size@{str\_\-max\_\-size}}
+\index{str\_\-max\_\-size@{str\_\-max\_\-size}!str.h@{str.h}}
+\subsubsection[{str\_\-max\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t str\_\-max\_\-size (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{str}
+\end{DoxyParamCaption}
+)}}
+\label{str_8h_a1dfa00642ae5f5be626f6d5e018fd6ad}
+Função auxiliar que indica o tamanho máximo da estrutura do tipo string.
+
+str -\/ estrutura do tipo string
+
+inteiro descrevendo o tamanho máximo da string. 
+
+Definição na linha 59 do arquivo str.c.
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{str_8h_a1dfa00642ae5f5be626f6d5e018fd6ad_icgraph}
+\end{center}
+\end{figure}
+
+

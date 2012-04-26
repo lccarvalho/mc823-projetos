@@ -1,0 +1,148 @@
+\hypertarget{beejClient_8c}{
+\section{Referência do Arquivo beejClient.c}
+\label{beejClient_8c}\index{beejClient.c@{beejClient.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include $<$errno.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$netdb.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$netinet/in.h$>$}\par
+{\ttfamily \#include $<$sys/socket.h$>$}\par
+{\ttfamily \#include $<$arpa/inet.h$>$}\par
+{\ttfamily \#include \char`\"{}tempo.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}str.h\char`\"{}}\par
+Gráfico de dependência de inclusões para beejClient.c:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{beejClient_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Definições e Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{beejClient_8c_a614217d263be1fb1a5f76e2ff7be19a2}{PORT}~\char`\"{}39410\char`\"{}
+\item 
+\#define \hyperlink{beejClient_8c_a16c16f9369be4a374a3e621f6d13bb16}{MAXDATASIZE}~100
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{beejClient_8c_aead97c99e70c0da7036fbbe230ef68b6}{printUsage} ()
+\item 
+void $\ast$ \hyperlink{beejClient_8c_a294867ba9d7ff47e39d421134d8e12ab}{get\_\-in\_\-addr} (struct sockaddr $\ast$sa)
+\item 
+int \hyperlink{beejClient_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Definições e macros}
+\hypertarget{beejClient_8c_a16c16f9369be4a374a3e621f6d13bb16}{
+\index{beejClient.c@{beejClient.c}!MAXDATASIZE@{MAXDATASIZE}}
+\index{MAXDATASIZE@{MAXDATASIZE}!beejClient.c@{beejClient.c}}
+\subsubsection[{MAXDATASIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAXDATASIZE~100}}
+\label{beejClient_8c_a16c16f9369be4a374a3e621f6d13bb16}
+
+
+Definição na linha 22 do arquivo beejClient.c.
+
+\hypertarget{beejClient_8c_a614217d263be1fb1a5f76e2ff7be19a2}{
+\index{beejClient.c@{beejClient.c}!PORT@{PORT}}
+\index{PORT@{PORT}!beejClient.c@{beejClient.c}}
+\subsubsection[{PORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define PORT~\char`\"{}39410\char`\"{}}}
+\label{beejClient_8c_a614217d263be1fb1a5f76e2ff7be19a2}
+
+
+Definição na linha 20 do arquivo beejClient.c.
+
+
+
+\subsection{Funções}
+\hypertarget{beejClient_8c_a294867ba9d7ff47e39d421134d8e12ab}{
+\index{beejClient.c@{beejClient.c}!get\_\-in\_\-addr@{get\_\-in\_\-addr}}
+\index{get\_\-in\_\-addr@{get\_\-in\_\-addr}!beejClient.c@{beejClient.c}}
+\subsubsection[{get\_\-in\_\-addr}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ get\_\-in\_\-addr (
+\begin{DoxyParamCaption}
+\item[{struct sockaddr $\ast$}]{sa}
+\end{DoxyParamCaption}
+)}}
+\label{beejClient_8c_a294867ba9d7ff47e39d421134d8e12ab}
+Função que obtem o endereço do socket
+
+sa -\/ estrutura de dados do tipo sockaddr
+
+endereço do socket (IPv4 ou IPv6) 
+
+Definição na linha 60 do arquivo beejClient.c.
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{beejClient_8c_a294867ba9d7ff47e39d421134d8e12ab_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{beejClient_8c_a0ddf1224851353fc92bfbff6f499fa97}{
+\index{beejClient.c@{beejClient.c}!main@{main}}
+\index{main@{main}!beejClient.c@{beejClient.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}
+\label{beejClient_8c_a0ddf1224851353fc92bfbff6f499fa97}
+Função principal do cliente, que recebe parâmetros e os repassa ao servidor usando as funções send, e recupera a resposta do servidor usando a função send, imprimindo-\/a então na tela.
+
+argc -\/ número de argumentos passados  argv\mbox{[}\mbox{]} -\/ argumentos passados
+
+inteiro representando o sucesso da execução 
+
+Definição na linha 82 do arquivo beejClient.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{beejClient_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{beejClient_8c_aead97c99e70c0da7036fbbe230ef68b6}{
+\index{beejClient.c@{beejClient.c}!printUsage@{printUsage}}
+\index{printUsage@{printUsage}!beejClient.c@{beejClient.c}}
+\subsubsection[{printUsage}]{\setlength{\rightskip}{0pt plus 5cm}void printUsage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{beejClient_8c_aead97c99e70c0da7036fbbe230ef68b6}
+Função auxiliar que imprime o modo de usar o programa 
+
+Definição na linha 31 do arquivo beejClient.c.
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{beejClient_8c_aead97c99e70c0da7036fbbe230ef68b6_icgraph}
+\end{center}
+\end{figure}
+
+

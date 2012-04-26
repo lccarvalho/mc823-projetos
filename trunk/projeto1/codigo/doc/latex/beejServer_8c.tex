@@ -1,0 +1,148 @@
+\hypertarget{beejServer_8c}{
+\section{Referência do Arquivo beejServer.c}
+\label{beejServer_8c}\index{beejServer.c@{beejServer.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include $<$errno.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$sys/socket.h$>$}\par
+{\ttfamily \#include $<$netinet/in.h$>$}\par
+{\ttfamily \#include $<$netdb.h$>$}\par
+{\ttfamily \#include $<$arpa/inet.h$>$}\par
+{\ttfamily \#include $<$sys/wait.h$>$}\par
+{\ttfamily \#include $<$signal.h$>$}\par
+{\ttfamily \#include \char`\"{}resposta.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}tempo.h\char`\"{}}\par
+Gráfico de dependência de inclusões para beejServer.c:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{beejServer_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Definições e Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{beejServer_8c_a614217d263be1fb1a5f76e2ff7be19a2}{PORT}~\char`\"{}39410\char`\"{}
+\item 
+\#define \hyperlink{beejServer_8c_aeefbbafa97642defe3ee6c3080b7d66f}{BACKLOG}~10
+\item 
+\#define \hyperlink{beejServer_8c_a16c16f9369be4a374a3e621f6d13bb16}{MAXDATASIZE}~100
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{beejServer_8c_a6c2d9589ac70568b8e3a6980bb3d45d6}{sigchld\_\-handler} (int s)
+\item 
+void $\ast$ \hyperlink{beejServer_8c_a294867ba9d7ff47e39d421134d8e12ab}{get\_\-in\_\-addr} (struct sockaddr $\ast$sa)
+\item 
+int \hyperlink{beejServer_8c_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Definições e macros}
+\hypertarget{beejServer_8c_aeefbbafa97642defe3ee6c3080b7d66f}{
+\index{beejServer.c@{beejServer.c}!BACKLOG@{BACKLOG}}
+\index{BACKLOG@{BACKLOG}!beejServer.c@{beejServer.c}}
+\subsubsection[{BACKLOG}]{\setlength{\rightskip}{0pt plus 5cm}\#define BACKLOG~10}}
+\label{beejServer_8c_aeefbbafa97642defe3ee6c3080b7d66f}
+
+
+Definição na linha 22 do arquivo beejServer.c.
+
+\hypertarget{beejServer_8c_a16c16f9369be4a374a3e621f6d13bb16}{
+\index{beejServer.c@{beejServer.c}!MAXDATASIZE@{MAXDATASIZE}}
+\index{MAXDATASIZE@{MAXDATASIZE}!beejServer.c@{beejServer.c}}
+\subsubsection[{MAXDATASIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAXDATASIZE~100}}
+\label{beejServer_8c_a16c16f9369be4a374a3e621f6d13bb16}
+
+
+Definição na linha 23 do arquivo beejServer.c.
+
+\hypertarget{beejServer_8c_a614217d263be1fb1a5f76e2ff7be19a2}{
+\index{beejServer.c@{beejServer.c}!PORT@{PORT}}
+\index{PORT@{PORT}!beejServer.c@{beejServer.c}}
+\subsubsection[{PORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define PORT~\char`\"{}39410\char`\"{}}}
+\label{beejServer_8c_a614217d263be1fb1a5f76e2ff7be19a2}
+
+
+Definição na linha 21 do arquivo beejServer.c.
+
+
+
+\subsection{Funções}
+\hypertarget{beejServer_8c_a294867ba9d7ff47e39d421134d8e12ab}{
+\index{beejServer.c@{beejServer.c}!get\_\-in\_\-addr@{get\_\-in\_\-addr}}
+\index{get\_\-in\_\-addr@{get\_\-in\_\-addr}!beejServer.c@{beejServer.c}}
+\subsubsection[{get\_\-in\_\-addr}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ get\_\-in\_\-addr (
+\begin{DoxyParamCaption}
+\item[{struct sockaddr $\ast$}]{sa}
+\end{DoxyParamCaption}
+)}}
+\label{beejServer_8c_a294867ba9d7ff47e39d421134d8e12ab}
+Função que obtem o endereço do socket
+
+sa -\/ estrutura de dados do tipo sockaddr
+
+endereço do socket (IPv4 ou IPv6) 
+
+Definição na linha 52 do arquivo beejServer.c.
+
+\hypertarget{beejServer_8c_a840291bc02cba5474a4cb46a9b9566fe}{
+\index{beejServer.c@{beejServer.c}!main@{main}}
+\index{main@{main}!beejServer.c@{beejServer.c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{beejServer_8c_a840291bc02cba5474a4cb46a9b9566fe}
+Função que controla o fluxo de execução do servidor, recebendo os parâmetros passados pelo cliente, montando uma resposta de acordo com esses parâmetros, e devolvendo essa resposta ao cliente
+
+inteiro indicando se o fluxo de execução do programa foi bem sucedido 
+
+Definição na linha 72 do arquivo beejServer.c.
+
+
+
+Este é o diagrama das funções utilizadas por esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{beejServer_8c_a840291bc02cba5474a4cb46a9b9566fe_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{beejServer_8c_a6c2d9589ac70568b8e3a6980bb3d45d6}{
+\index{beejServer.c@{beejServer.c}!sigchld\_\-handler@{sigchld\_\-handler}}
+\index{sigchld\_\-handler@{sigchld\_\-handler}!beejServer.c@{beejServer.c}}
+\subsubsection[{sigchld\_\-handler}]{\setlength{\rightskip}{0pt plus 5cm}void sigchld\_\-handler (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}}
+\label{beejServer_8c_a6c2d9589ac70568b8e3a6980bb3d45d6}
+Função auxiliar para controlar os processos filhos
+
+s -\/ flag 
+
+Definição na linha 36 do arquivo beejServer.c.
+
+
+
+Este é o diagrama das funções que utilizam esta função:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{beejServer_8c_a6c2d9589ac70568b8e3a6980bb3d45d6_icgraph}
+\end{center}
+\end{figure}
+
+

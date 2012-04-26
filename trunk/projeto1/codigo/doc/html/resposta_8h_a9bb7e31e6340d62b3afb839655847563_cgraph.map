@@ -1,0 +1,16 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$resposta_8c.html#a2b6f397b0bfae5590b292d282513c54b" title="escreveComentario" alt="" coords="184,5,331,35"/>
+<area shape="rect" id="node7" href="$resposta_8c.html#a6c04d45a3b24b43c86d50889bde25d67" title="infoDisciplina" alt="" coords="400,104,504,133"/>
+<area shape="rect" id="node25" href="$resposta_8c.html#aae0e9c217f1ede36bbf9821b36bba3f9" title="infoDisciplinas" alt="" coords="396,157,508,187"/>
+<area shape="rect" id="node30" href="$resposta_8c.html#a2a098bc71f2a19dd74318fd778676979" title="leComentario" alt="" coords="204,109,311,139"/>
+<area shape="rect" id="node33" href="$resposta_8c.html#adca402fde30bac4845d32a7dd4e6160a" title="listaDisciplinas" alt="" coords="395,264,509,293"/>
+<area shape="rect" id="node37" href="$resposta_8c.html#ae53e5d927eddd073efa7dd3777c222c2" title="programaDisciplina" alt="" coords="380,211,524,240"/>
+<area shape="rect" id="node5" href="$resposta_8c.html#aaf2c986b7320373a463f607a67c07365" title="uppercase" alt="" coords="601,104,689,133"/>
+<area shape="rect" id="node9" href="$str_8c.html#a9c98046afe58b4d941f546c5a604a7de" title="str_concat_chararr" alt="" coords="575,211,716,240"/>
+<area shape="rect" id="node20" href="$str_8c.html#a43e9efab3e78f169462b9f842c827fba" title="str_initialize" alt="" coords="597,157,693,187"/>
+<area shape="rect" id="node11" href="$str_8c.html#a47d6c89b7dacac751de1965e2ee90189" title="str_free_size" alt="" coords="767,237,868,267"/>
+<area shape="rect" id="node15" href="$str_8c.html#ae20e94ac638a09b2cd12680cbdae2910" title="str_max_size" alt="" coords="917,289,1024,319"/>
+<area shape="rect" id="node18" href="$mm_8c.html#a93a8ec6e8a6eef0f62b7e5b50d0bf9e4" title="xrealloc" alt="" coords="783,184,852,213"/>
+<area shape="rect" id="node13" href="$str_8c.html#a0df87a68167272d6191fd0fcef787752" title="str_cur_size" alt="" coords="921,236,1020,265"/>
+<area shape="rect" id="node22" href="$mm_8c.html#a42ccfa6fc49cc4ce90cc44cd05052490" title="xmalloc" alt="" coords="783,131,852,160"/>
+</map>
