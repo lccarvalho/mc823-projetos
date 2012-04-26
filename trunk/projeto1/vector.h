@@ -5,6 +5,12 @@
 extern "C" {
 #endif
 
+    /* --------------------------------------------------------------------------*/
+    /**
+     * @Synopsis  
+     * Estrutura de dados para lidar com vetores.
+     */
+    /* ----------------------------------------------------------------------------*/
 	typedef struct vec{
 		void **elts;
 		int cur;

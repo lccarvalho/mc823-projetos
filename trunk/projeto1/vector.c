@@ -4,10 +4,32 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função auxiliar para indicar o espaço livre na estrutura do tipo vector
+ *
+ * @Param vec - estrutura do tipo vector
+ *
+ * @Returns   inteiro representando o espaço livre
+ */
+/* ----------------------------------------------------------------------------*/
 int vector_free_size(vector vec) {
 	return vec->max_size - vec->cur;
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função auxiliar que inicializa uma estrutura do tipo vector
+ *
+ * @Param count
+ * @Param size_of_elt
+ * @Param rem_func
+ *
+ * @Returns   
+ */
+/* ----------------------------------------------------------------------------*/
 vector vector_initialize(int count, int size_of_elt, void (*rem_func)(void*)) {
 	vector vec = NULL;
 	vec = (vector) xmalloc(sizeof (struct vec));
@@ -72,6 +94,16 @@ int vector_remove_element_at(vector vec, int pos) {
 
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função auxiliar para liberar memória usada por uma estrutura do tipo vector
+ *
+ * @Param vec - estrutura do tipo vector
+ *
+ * @Returns   inteiro indicando sucesso ou fracasso
+ */
+/* ----------------------------------------------------------------------------*/
 int vector_free(vector vec) {
 	if (vec == NULL)
 		return 0;
@@ -84,6 +116,19 @@ int vector_free(vector vec) {
 	return 0;
 }
 
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função auxiliar para comparar os elementos de uma estrutura do tipo vector
+ * com outro elemento
+ *
+ * @Param vec - estrutura de dados do tipo vector
+ * @Param elt - valor a ser comparado
+ * @Param cmp_func - função de comparação
+ *
+ * @Returns   inteiro indicando sucesso ou fracasso
+ */
+/* ----------------------------------------------------------------------------*/
 int vector_contains(vector vec, void *elt,int (*cmp_func)(void*,void*)) {
 	int i;
 	if (vec != NULL) {
