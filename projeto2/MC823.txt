@@ -1,0 +1,23 @@
+MC823 - Laboratório de Redes
+
+
+Programa da Disciplina:
+
+- Sockets TCP;
+- Sockets UDP;
+- RMI;
+- Web Services;
+
+Horário:
+Qui 10-12hrs
+
+Sala de Aula:
+CC02
+
+Professor:
+Edmundo Madeira
+
+Comentário:
+
+No dia 26/04 não haverá aula
+teste
