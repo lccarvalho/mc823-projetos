@@ -1,0 +1,36 @@
+MC548 - Análise de Algoritmos II
+
+Programa da Disciplina:
+
+- Reduções entre problemas:
+  - Para obtenção de cotas superiores
+  - Para obtenção de cotas inferiores
+- Programação Linear:
+  - Formulação de problemas como Programação Linear
+  - Apresentação resumida do algoritmo SIMPLEX e de sua complexidade
+  - Dualidade em programação linear
+- Classes de Problemas:
+  - A hierarquia de Complexidade: as classes P, NP, NP-completo e NP-difícil
+  - A noção de completude e o Teorema de Cook
+  - Problemas e reduções fundamentais em NP-completude
+  - Outras classes: co-NP, PSPACE e problemas indecidíveis
+- Tratamento de Problemas NP-difíceis:
+  - Programação Linear Inteira
+  - Algoritmos Exatos
+  - Algoritmos Aproximados
+  - Algoritmos Heurísticos
+
+Horário:
+Seg 19-21hrs
+Qua 21-23hrs
+
+Sala de Aula:
+CB08
+
+Professor:
+Zanoni Dias
+
+
+Comentário:
+
+A prova será remarcada para o dia 28/05
