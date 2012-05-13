@@ -13,7 +13,35 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
+#include "str.h"
+
 #define SERVERPORT "4950"    // the port users will be connecting to
+
+#define MAXBUFLEN 1500
+
+
+
+/* --------------------------------------------------------------------------*/
+/**
+ * @Synopsis  
+ * Função auxiliar que imprime o modo de usar o programa
+ */
+/* ----------------------------------------------------------------------------*/
+void printUsage() {
+    printf("\nclient.o  [porta] [comando] [param] [texto]\n");
+    
+   
+    printf("\ncomandos:\n");
+    printf("\n    l : lista os codigos e nomes das disciplinas cadastradas");
+    printf("\n    p [param] : retorna o programa da disciplina [param]");
+    printf("\n    i [param] : retorna  todas as informacoes sobre a disciplina [param]");
+    printf("\n                 se [param] nao for fornecido, retorna todas as informacoes");
+    printf("\n                 de todas as disciplinas cadastradas");
+    printf("\n    w [param] [texto] : recebe e armazena o texto de um comentario sobre a proxima");
+    printf("\n                 aula da disciplina [param]");
+    printf("\n    c [param] : retorna o comentario armazenado sobre a proxima aula da");
+    printf("\n                 disciplina [param]\n");
+}
 
 int main(int argc, char *argv[])
 {
@@ -22,10 +50,10 @@ int main(int argc, char *argv[])
     int rv;
     int numbytes;
 
-    if (argc != 3) {
-        fprintf(stderr,"usage: talker hostname message\n");
-        exit(1);
-    }
+    char buf[MAXBUFLEN];
+    char *resposta;
+    string parametro;
+
 
     memset(&hints, 0, sizeof hints);
     hints.ai_family = AF_UNSPEC;
@@ -52,15 +80,42 @@ int main(int argc, char *argv[])
         return 2;
     }
 
-    if ((numbytes = sendto(sockfd, argv[2], strlen(argv[2]), 0,
+    //Inicializa a string a ser enviada ao servidor
+    parametro = str_initialize(((size_t)MAXBUFLEN));
+    //Funções envolvendo disciplinas específicas
+    if(argc == 4){
+
+        str_concat_chararr(parametro, argv[2], strlen(argv[2]));
+        str_concat_chararr(parametro, argv[3], strlen(argv[3])); 
+    }
+    //Escrever comentário
+    else if(argc == 5){
+        str_concat_chararr(parametro, argv[2], strlen(argv[2]));
+        str_concat_chararr(parametro, argv[3], strlen(argv[3]));
+        str_concat_chararr(parametro, argv[4], strlen(argv[4]));
+    }
+    else{
+
+        str_concat_chararr(parametro, argv[2], strlen(argv[2]));
+    }
+    if ((numbytes = sendto(sockfd, parametro->s, str_cur_size(parametro), 0,
              p->ai_addr, p->ai_addrlen)) == -1) {
         perror("talker: sendto");
         exit(1);
     }
 
-    freeaddrinfo(servinfo);
+    //freeaddrinfo(servinfo);
 
     printf("talker: sent %d bytes to %s\n", numbytes, argv[1]);
+    
+    if ((numbytes = recvfrom(sockfd, buf, MAXBUFLEN-1 , 0,
+                (struct sockaddr *)&p->ai_addr, &p->ai_addrlen)) == -1) {
+            perror("recvfrom");
+            exit(1);
+        }
+    resposta = strndup(buf, numbytes); 
+    printf("Response contains \"%s\"\n", resposta);
+
     close(sockfd);
 
     return 0;
