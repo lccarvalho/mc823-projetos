@@ -15,7 +15,10 @@
 
 #define MYPORT "4950"    // the port users will be connecting to
 
-#define MAXBUFLEN 100
+#include "resposta.h"
+#include "tempo.h"
+
+#define MAXBUFLEN 1500
 
 // get sockaddr, IPv4 or IPv6:
 void *get_in_addr(struct sockaddr *sa)
@@ -37,6 +40,13 @@ int main(void)
     char buf[MAXBUFLEN];
     socklen_t addr_len;
     char s[INET6_ADDRSTRLEN];
+
+    /* Estrutura para obtençao do tempo de execução */
+    struct timeval startTime;
+    struct timeval endTime;
+    double time;
+
+    char *resposta;
 
     memset(&hints, 0, sizeof hints);
     hints.ai_family = AF_UNSPEC; // set to AF_INET to force IPv4
@@ -74,22 +84,38 @@ int main(void)
 
     printf("listener: waiting to recvfrom...\n");
 
-    while(1){
-    addr_len = sizeof their_addr;
-    if ((numbytes = recvfrom(sockfd, buf, MAXBUFLEN-1 , 0,
-        (struct sockaddr *)&their_addr, &addr_len)) == -1) {
-        perror("recvfrom");
-        exit(1);
-    }
+    //while(1){
+        addr_len = sizeof their_addr;
+        if ((numbytes = recvfrom(sockfd, buf, MAXBUFLEN-1 , 0,
+            (struct sockaddr *)&their_addr, &addr_len)) == -1) {
+            perror("recvfrom");
+            exit(1);
+        }
 
-    printf("listener: got packet from %s\n",
-        inet_ntop(their_addr.ss_family,
-            get_in_addr((struct sockaddr *)&their_addr),
-            s, sizeof s));
-    printf("listener: packet is %d bytes long\n", numbytes);
-    buf[numbytes] = '\0';
-    printf("listener: packet contains \"%s\"\n", buf);
-    }
+        printf("listener: got packet from %s\n",
+            inet_ntop(their_addr.ss_family,
+                get_in_addr((struct sockaddr *)&their_addr),
+                s, sizeof s));
+        printf("listener: packet is %d bytes long\n", numbytes);
+        buf[numbytes] = '\0';
+        printf("listener: packet contains \"%s\"\n", buf);
+
+        /* Inicia o cálculo do tempo, antes do cálculo da resposta */
+        gettimeofday(&startTime, NULL);
+
+        /* Chama a função de cálculo da resposta */
+        resposta = preparaResposta(buf);
+
+        /* Termina a contagem do tempo */
+        gettimeofday(&endTime,NULL);
+
+        if((sendto(sockfd, resposta, strlen(resposta), 0, 
+                    (struct sockaddr *)&their_addr, addr_len))==-1){
+            perror("sendto");
+            exit(1);
+        }
+        printf("Sending response to talker.\n");
+    //}
     close(sockfd);
 
     return 0;
