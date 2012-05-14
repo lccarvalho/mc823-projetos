@@ -54,6 +54,11 @@ int main(int argc, char *argv[])
     char *resposta;
     string parametro;
 
+    /* Estruturas para o calculo do tempo */
+    struct timeval startTime;
+    struct timeval endTime;
+    double time;
+
 
     memset(&hints, 0, sizeof hints);
     hints.ai_family = AF_UNSPEC;
@@ -98,6 +103,10 @@ int main(int argc, char *argv[])
 
         str_concat_chararr(parametro, argv[2], strlen(argv[2]));
     }
+
+    /* Inicio do calculo do tempo, antes do send */
+    gettimeofday(&startTime, NULL);
+
     if ((numbytes = sendto(sockfd, parametro->s, str_cur_size(parametro), 0,
              p->ai_addr, p->ai_addrlen)) == -1) {
         perror("talker: sendto");
@@ -113,9 +122,13 @@ int main(int argc, char *argv[])
             perror("recvfrom");
             exit(1);
         }
+    /*Termino do calculo do tempo, apos o recv  */
+    gettimeofday(&endTime, NULL);
+
+    time = calculaTempo(startTime, endTime);
     resposta = strndup(buf, numbytes); 
     printf("Response contains \"%s\"\n", resposta);
-
+    printf("\nTotal Time: %.2lf microseconds\n", time);
     close(sockfd);
 
     return 0;

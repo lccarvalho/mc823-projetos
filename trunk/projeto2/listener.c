@@ -109,6 +109,9 @@ int main(void)
         /* Termina a contagem do tempo */
         gettimeofday(&endTime,NULL);
 
+        time = calculaTempo(startTime, endTime);
+        printf("Processing Time: %.2lf microseconds\n", time);
+
         if((sendto(sockfd, resposta, strlen(resposta), 0, 
                     (struct sockaddr *)&their_addr, addr_len))==-1){
             perror("sendto");
