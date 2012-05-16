@@ -14,6 +14,7 @@
 #include <netdb.h>
 
 #include "str.h"
+#include "tempo.h"
 
 #define SERVERPORT "4950"    // the port users will be connecting to
 
