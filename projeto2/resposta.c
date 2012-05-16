@@ -77,7 +77,7 @@ char* leComentario(char* disc){
     sub = strlen(com);
     for (i = 0; i < strlen(info); i++) {
          if((info[i] == com[j]) && (com[j] != '\0')){
-             printf("%c\n", info[i]);
+             
              cont++;
              j++;
              if(cont == (sub-1)){
