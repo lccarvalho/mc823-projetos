@@ -84,7 +84,7 @@ int main(void)
 
     printf("listener: waiting to recvfrom...\n");
 
-    //while(1){
+    while(1){
         addr_len = sizeof their_addr;
         if ((numbytes = recvfrom(sockfd, buf, MAXBUFLEN-1 , 0,
             (struct sockaddr *)&their_addr, &addr_len)) == -1) {
@@ -118,7 +118,7 @@ int main(void)
             exit(1);
         }
         printf("Sending response to talker.\n");
-    //}
+    }
     close(sockfd);
 
     return 0;
